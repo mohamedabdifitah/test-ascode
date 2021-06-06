@@ -1,20 +1,20 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "code editor",
+  "name": "Create code run and debug",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "cd_letter_logo-01_4x.jpg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
+      "src": "cd_letter_logo-01_4x.jpg",
+      "type": "image/x-icon",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
+      "src": "Monogram-CD-Logo-by-Greenlines-Studios.jpg",
+      "type": "image/x-icon",
       "sizes": "512x512"
     }
   ],
