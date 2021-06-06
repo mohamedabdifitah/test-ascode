@@ -1,0 +1,14 @@
+.Windows {
+/*
+background-color:#19191a;
+*/
+background-color:black;
+display:flex;
+border:4px solid blue;
+color:white;
+margin-left:22%;
+height:300px;
+margin-bottom:0%;
+
+
+}
