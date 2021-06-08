@@ -1,9 +1,12 @@
 .Sidebar {
 display:flex;
 flex-direction:column;
+background-color:#424242;
+/*
 background-color:#333232;
+*/
 width:18%;
-height:500px;
+height:90rem;
 border:1px inset #212121;
 margin-bottom:50%;
 margin-top:0%
@@ -18,9 +21,9 @@ flex-direction:column;
 
 }
 .vertical {
-border-left: 6px solid white;
-height: 200px;
+border-left: 6px solid #424242 ;
+height: 60rem;
 position:absolute;
-left:10%;
+left:6%;
 
 }

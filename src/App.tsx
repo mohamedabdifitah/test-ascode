@@ -7,11 +7,9 @@ import Header from "./component/Header/Header"
 import Sidebar from "./component/Sidebar/Sidebar"
 import Windows from "./component/Window/Windows"
 import Terminal from "./component/Terminal/Terminal"
-import Navbar from "./component/Sidebar/Navbar/Navbar"
 function App() {
   return (
     <div className="App">
-       <Navbar />
        <Header />
        <Sidebar />
        <Windows />

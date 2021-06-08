@@ -6,4 +6,5 @@ function Terminal() {                                      return (
        </div>
 
   )
-}                                                       export default Terminal
+}                       
+export default Terminal

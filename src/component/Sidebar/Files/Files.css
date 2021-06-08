@@ -1,0 +1,55 @@
+.Files {
+background-color:#2e2e2e;
+color:white;
+display:flex;
+margin-left:40%;
+position:absolute;
+left:-20rem;
+width:11%;
+height:90rem;
+
+}
+img {
+width:20px;
+margin-bottom:1rem;
+
+}
+h3 {
+text-align:center
+
+}
+h4{
+
+background-color:#424242;
+position:sticky;
+top:-4px;
+
+}
+.Explore__files {
+background-color:blue;
+width:116.5%;
+padding:1px;
+align-items:center;
+}
+.modified__header {
+/*
+background-color:#424242;
+*/
+display:flex;
+flex-direction:column;
+overflow:scroll;
+padding:1px;
+justify-content:space-between;
+width:116.5%;
+height:10rem;
+}
+.main__dir {
+overflow:scroll;
+height:75.5rem;
+position:absolute;
+top:14%;
+width:100%;
+
+}
+
+

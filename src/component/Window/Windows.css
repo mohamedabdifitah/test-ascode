@@ -1,14 +1,21 @@
 .Windows {
 /*
 background-color:#19191a;
+
+background-color:#1c1a1a;
 */
-background-color:black;
+background-color:#292929;
 display:flex;
-border:4px solid blue;
+border:1px solid #1c1a1a;
 color:white;
 margin-left:22%;
-height:300px;
-margin-bottom:0%;
+height:80rem;
+position:absolute;
+top:4rem;
+left:-1rem;
+width:78%;
+
 
 
 }
+
