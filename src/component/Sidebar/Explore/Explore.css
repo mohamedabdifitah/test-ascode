@@ -1,6 +1,36 @@
 .Explore {
+position:relative;
 background-color:#424242;
-width:36%;
-height:130rem;
+display:flex;
+width:7%;
+height:60vh;
+flex-direction:column;
+padding:2px;
+top:5rem;
 
+}
+.git__explore{
+height:40px;
+width:40px;
+/*
+filter:gray invert(48%) sepia(13%) saturate(0%) hue-rotate(130deg) brightness(95%) contrast(10000%);
+*/
+/*
+filter:grayscale(100%) invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+*/
+/*
+filter:gray saturate(0%) brightness(95%) contrast(1000%);
+*/
+filter: grayscale(100%);
+}
+
+
+.file__explore {
+height:40px;
+width:40px;
+filter:gray saturate(0%) brightness(95%) invert(48%) sepia(13%) contrast(1000%);
+/*
+filter:grayscale(100%) invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+
+*/
 }

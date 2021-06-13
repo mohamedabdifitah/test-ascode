@@ -1,4 +1,4 @@
-import "./Sidebar.css";
+
 /*
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import FolderIcon from '@material-ui/icons/Folder';

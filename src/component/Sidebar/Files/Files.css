@@ -3,10 +3,11 @@ background-color:#2e2e2e;
 color:white;
 display:flex;
 margin-left:40%;
-position:absolute;
+position:relative;
 left:-20rem;
-width:11%;
-height:90rem;
+width:12%;
+height:60vh;
+top:-56vh
 
 }
 img {
@@ -27,7 +28,7 @@ top:-4px;
 }
 .Explore__files {
 background-color:blue;
-width:116.5%;
+width:116.9%;
 padding:1px;
 align-items:center;
 }
@@ -47,9 +48,84 @@ height:10rem;
 overflow:scroll;
 height:75.5rem;
 position:absolute;
-top:14%;
+top:15%;
 width:100%;
+margin-left:-2px;
+}
+.Folder__dir {
+display:flex;
+position:absolute;
+background-color:#424242;
+height:30px;
+top:1.5rem;
 
 }
+.action__dir {
+height:15px;
+position:relative;
+top:-2rem;
+font-size:2px;
+color:white;
+}
+.dir__name {
+color:white;
+}
+.Folder__name {
+color:white;
+}
+.VscNewFile {
+position:relative;
+top:7px;
+align-items:center;
+padding:2px;
 
 
+}
+.VscNewFolder {
+position:relative;
+top:7px;
+align-items:center;
+padding:2px;
+}
+.VscRefresh {
+position:relative;
+top:7px;
+align-items:center;
+padding:2px;
+}
+.VscDiffRenamed {
+position:relative;
+top:7px;
+align-items:center;
+padding:2px;
+}
+
+.File__dir {
+position:absolute;
+top:4rem;
+}
+.file__icon {
+position:relative;
+left:2rem;
+top:0.3rem;
+}
+.file__name {
+position:relative;
+left:3.9rem;
+top:-3rem;
+
+}
+.folder__icons {
+position:relative;
+display:flex;
+visibility: hidden;
+opacity: 0;
+transition: visibility 0s, opacity 0.5s linear;
+}
+
+.folder__icons:hover {
+position:relative;
+display:flex;
+visibility:visible;
+opacity: 0.7;
+}

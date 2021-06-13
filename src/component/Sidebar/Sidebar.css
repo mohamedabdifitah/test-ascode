@@ -2,14 +2,16 @@
 display:flex;
 flex-direction:column;
 background-color:#424242;
+position:absolute;
 /*
 background-color:#333232;
-*/
+
 width:18%;
 height:90rem;
 border:1px inset #212121;
 margin-bottom:50%;
 margin-top:0%
+*/
 }
 .FolderOpenTwoToneIcon{
 margin-bottom:4%;

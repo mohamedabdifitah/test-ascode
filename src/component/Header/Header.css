@@ -1,11 +1,18 @@
 .Header {
+position:absolute;
 display:flex;
 background-color:#28292b;
 margin-left:20%;
 width:79%;
 border-radius:9px;
 }
-.Avatar {
-position:absolute;
-}
+.Header__icons {
+align-items:center;
 
+}
+/*
+img {
+height:15px;
+width:5px;
+}
+*/

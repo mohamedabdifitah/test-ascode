@@ -5,17 +5,30 @@ background-color:#19191a;
 background-color:#1c1a1a;
 */
 background-color:#292929;
+/*
+background-color:#424242;
+*/
 display:flex;
 border:1px solid #1c1a1a;
 color:white;
 margin-left:22%;
-height:80rem;
+height:60vh;
 position:absolute;
-top:4rem;
+top:4.1rem;
 left:-1rem;
 width:78%;
 
 
+
+}
+.Windows__header {
+height:5vh;
+background-color:#424242;;
+width:100%;
+}
+h1 {
+position:absolute;
+top:5rem;
 
 }
 
