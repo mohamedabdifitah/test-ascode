@@ -8,13 +8,16 @@ background-color:#292929;
 /*
 background-color:#424242;
 */
+position:relative;
 display:flex;
 border:1px solid #1c1a1a;
 color:white;
 margin-left:22%;
 height:60vh;
 position:absolute;
+
 top:4.1rem;
+
 left:-1rem;
 width:78%;
 

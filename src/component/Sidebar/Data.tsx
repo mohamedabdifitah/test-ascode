@@ -39,6 +39,12 @@ export const data = {
    icon:"https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg",
    type:"file",
   },
+  {
+  FileName:"main.py",
+  icon:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1200px-Python.svg.png",
+  type:"file"
+  },
+
   
 
  ],

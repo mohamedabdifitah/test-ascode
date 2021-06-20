@@ -12,6 +12,8 @@ top:5rem;
 .git__explore{
 height:40px;
 width:40px;
+position:relative;
+left:-1rem;
 /*
 filter:gray invert(48%) sepia(13%) saturate(0%) hue-rotate(130deg) brightness(95%) contrast(10000%);
 */
@@ -28,9 +30,27 @@ filter: grayscale(100%);
 .file__explore {
 height:40px;
 width:40px;
-filter:gray saturate(0%) brightness(95%) invert(48%) sepia(13%) contrast(1000%);
+position:relative;
+left:-1rem;
+color:white;
 /*
+filter:gray saturate(0%) brightness(95%) invert(48%) sepia(13%) contrast(1000%);
+*/
+
 filter:grayscale(100%) invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
 
-*/
+}
+.market__explore {
+width:100%;
+height:40px;
+position:relative;
+left:-1rem;
+filter:gray saturate(0%) brightness(95%) invert(48%) sepia(13%) contrast(1000%);
+
+}
+.selected {
+background-color:black;
+position:relative;
+left:-1rem;
+
 }

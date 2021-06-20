@@ -4,8 +4,9 @@ import CustomizedTabs from "./Tabscomp"
 import IconTabs from "./OpenFiles"
 import ScrollableTabsButtonAuto from "./ScrollTabs"
 import FileOpenerHeader from "./FileOpenerHeader";
+
 function Windows() {
-  return (                                                     <div className="Windows">
+  return (                                                       <div className="Windows">
       <div className="Windows__header">
        <FileOpenerHeader />
        </div>

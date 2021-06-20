@@ -8,14 +8,29 @@ import Setting from "./component/setting/Setting"
 import Sidebar from "./component/Sidebar/Sidebar"
 import Windows from "./component/Window/Windows"
 import Terminal from "./component/Terminal/Terminal"
+/*port Split from "split.js" 
+import Split from 'react-splitter';
+*/
+import SplitterLayout from 'react-splitter-layout';
+import 'react-splitter-layout/lib/index.css';
 function App() {
+  /*
+  const onSplitChanged = (primarySize: string) => {
+  console.log(`The split is: `,primarySize);
+  };
+  const onMeasuredSizesChanged = (sizes: SplitMeasuredPixelSizes) => {
+  console.log(`The primary pane is:`, sizes.primary,"px");
+  console.log(`The splitter is:`, sizes.splitter,"px");
+  console.log(`The secondary pane is:`, sizes.secondary,"px");
+  };
+  */
   return (
     <div className="App">
 
       <Setting />
        <Header />
        <Sidebar />
-       <Windows />
+        <Windows />
        <Terminal />
     </div>
   );

@@ -2,4 +2,8 @@
 height:100%;
 width:100%;
 }
-
+.splitter-layout {
+position:relative;
+top:0rem;
+height:80px;
+}

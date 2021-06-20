@@ -15,8 +15,34 @@ import gitWhiteIcon from "../../.././asImages/Git-Icon-White.png";
 import ExploreIcon from '@material-ui/icons/Explore';
 import {makeStyles} from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
+import ExploreTabs from "../../../Tabs/Explore/ExploreTabs";
 import "./Explore.css"
-const Explore = () => {
+import ExploreOpener from "../../.././Layouts/ExploreOpener/ExploreOpener";
+
+
+interface Props {
+ ExploreChangerLayout:number,
+ setExploreChangerLayout:React.Dispatch<React.SetStateAction<number>>,
+
+}
+const Explore = ({ExploreChangerLayout,setExploreChangerLayout}:Props) => {
+ const [SvgIcon , setSvgIcon] = useState(false);
+ /*
+ const {ExploreChangerLayout,setExploreChangerLayout} = ExploreOpener();
+ */
+ const [Color , setColor] = useState("white")
+ const SelectedLayout = (index:number,Tab:string) => {
+  setExploreChangerLayout(index)
+  setColor("white")
+  /*document.getElementById(Tab).className += "selected";*/
+ }
+
+ /*const SvgIconsSplitter = (svgIcon) => {
+  return null
+  
+
+ }
+ */
  const useStyles = makeStyles({
   root: { 
      fontSize:'3rem',
@@ -35,11 +61,23 @@ const Explore = () => {
     const classes = useStyles();
  return (
      <div className="Explore">
-       <p> Explore </p>
-       <img className="file__explore" src={Fileicon} />
-       <img className="git__explore" src={gitWhiteIcon}></img>
+      <p> Explore </p>
+       {ExploreTabs.map((Tab,index) => {
+        return (
+	<div key={index} style={{width:"100%"}}>
+	 <IconButton onClick={() => {
+	 SelectedLayout(index,Tab.class)
+	 }}
+	 >
+	 {/*<img  id ={ Tab.class} className={Tab.class} src={Tab.icon} /> 
+	 */}
+	 <Tab.component style={Tab.style} color={ExploreChangerLayout==index?Color:"grey"} /> 
+	 </IconButton> 
+	 </div>
+	 )
+      }
+      )}
 
-      <IconButton className={classes.button}> <ExploreIcon className={classes.root}/></IconButton>
      </div>
 
  )

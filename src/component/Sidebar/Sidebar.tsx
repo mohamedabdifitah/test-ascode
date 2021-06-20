@@ -8,7 +8,11 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import Files from "./Files/Files"
 import {ExtensionSplitter} from "./ExtensionSplitter"
 import Explore from "./Explore/Explore"
+import ExploreOpener from "../.././Layouts/ExploreOpener/ExploreOpener";
+import ExplorePages from "../.././Layouts/ExploreOpener/ExplorePages";
 function Sidebar() {
+  const {ExploreChangerLayout,setExploreChangerLayout} = ExploreOpener();
+  const ExplorePage = ExplorePages[ExploreChangerLayout]
   return (
        <div className="Sidebar">
         <div className="sidebar__icons">
@@ -20,9 +24,8 @@ function Sidebar() {
 	  </div>
 	<div>
 	</div>
-	<Explore />
-	<Files />
-
+	<Explore ExploreChangerLayout={ExploreChangerLayout} setExploreChangerLayout={setExploreChangerLayout}/>
+	<ExplorePage.component />
        </div> 
 
   )
