@@ -5,7 +5,7 @@ display:flex;
 margin-left:40%;
 position:relative;
 left:-20rem;
-width:12%;
+width:14%;
 height:60vh;
 top:-56vh
 
@@ -103,6 +103,12 @@ padding:2px;
 .File__dir {
 position:absolute;
 top:4rem;
+cursor:move;
+background-color:blue;
+
+}
+.File__dir > ul {
+list-style-type: none;
 }
 .file__icon {
 position:relative;
@@ -118,14 +124,23 @@ top:-3rem;
 .folder__icons {
 position:relative;
 display:flex;
-visibility: hidden;
-opacity: 0;
+
+visibility:visible;
 transition: visibility 0s, opacity 0.5s linear;
+
+
 }
 
 .folder__icons:hover {
 position:relative;
 display:flex;
 visibility:visible;
+transition: visibility 0s, opacity 0.5s linear;
+/*
 opacity: 0.7;
+*/
+}
+.each__file {
+background-color:black;
+
 }

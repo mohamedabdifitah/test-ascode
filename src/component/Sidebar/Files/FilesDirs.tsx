@@ -1,5 +1,5 @@
 import React,{useEffect} from "react"
-
+import "./FilesDirs.css"
 interface Props {
 file:{
 FileName:string,
@@ -12,7 +12,7 @@ const FilesDirs = (props:Props)=> {
  const fileview = ():JSX.Element[] => {
    return props.file.map((val,index) => {
      return (
-        <div>
+        <div className="each__file">
 	<li>
          <img className="file__icon" src ={val.icon}/>
          <p className="file__name">{val.FileName}</p>

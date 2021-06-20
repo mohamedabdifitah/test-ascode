@@ -42,7 +42,6 @@ const Files = () => {
      color:"white",
      },
      toggle:{
-      visible:"hidden",
       }
    }
    )
@@ -53,20 +52,29 @@ const Files = () => {
    }])
    const FiledataHandler = (data:File["Data"])  => {
     console.log(data)
+    /*
     data.map((dataFile) => {
      setFiledata([
+     ...Filedata,
      dataFile
 
      ])
 
     })
+    */
+    setFiledata(
+     data
+    )
+
    }
    useMemo(() => {
+    /*
     data.childrens.map((val,index)=>{
      FiledataHandler([val])
-    },[Filedata])
+     */
+    FiledataHandler(data.childrens)
     
-   },[])
+   },Filedata)
    const classes = useStyles() 
    const [toggle,setToggle] = useState(false);
    const isToggle = () => {
