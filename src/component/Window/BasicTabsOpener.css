@@ -1,0 +1,28 @@
+.header-files-options {
+display:flex;
+list-style-type:none;
+flex-direction:row;
+/*
+background-color:black;
+*/
+}
+.header-file-options {
+display:flex;
+flex:1;
+height:100%;
+width:100%;
+
+
+}
+.file__image__header {
+position:relative;
+left:-1.5rem;
+top:0.8rem;
+width:25px;
+height:25px;
+}
+.file__name__header {
+flex:1;
+position:relative;
+left:-1rem;
+}
