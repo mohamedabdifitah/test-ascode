@@ -1,7 +1,82 @@
-.list__files {
+.header__list__files {
+background-color:#2e2e2e;
+display:flex;
+overflow:scroll;
+height:90px;
+justify-content:space-between;
+}
+li {
+
+background-color:#2e2e2e;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+margin:3px;
+width:12rem;
+}
+/*.header__list__files {
 height:10px;
+background-color:black;
+display:flex;
+overflow:scroll;
+height:90px;
+justify-content:space-between;
+}
+li {
+
+
+background-color:blue;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+margin:3px;
+width:5rem;
+}
+*/
+ul{
+list-style-type:none;
+display:flex;
+flex-direction:row;
+overflow:scroll;
+justify-content:space-between;
+/*
+background-color:blue;
+*/
+}
+svg {
 
 }
 .file__name {
+color:white;
 position:relative;
+top:0px;
+left:-10px;
+}
+/*
+ul{
+list-style-type:none;
+display:flex;
+flex-direction:row;
+overflow:scroll;
+justify-content:space-between;
+
+background-color:blue;
+
+}
+*/
+svg {
+
+}
+/*
+.file__name {
+color:white;
+position:relative;
+left:3px;
+
+}
+*/
+.image__file{
+position:relative;
+left:-13px;
+width:30px;
 }

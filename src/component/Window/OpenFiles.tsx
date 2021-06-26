@@ -37,13 +37,12 @@ function IconTabs() {
    {
    icon:"hhh",
    name:"welcome",
+   cancel:"hhh"
    }
     
   ])
   useMemo(() => {
-   setData(
-   Data
-   )
+
   },[])
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -56,7 +55,7 @@ function IconTabs() {
 	<Tabs
         value={value}
         onChange={handleChange}                                       variant="scrollable"                                          indicatorColor="primary"                                      aria-label="icon tabs example"                              >
-	<Tab icon={<ListFiles file={[val]} /> } />
+	{/*<Tab icon={<ListFiles file={[val]} /> } />*/}
 	</Tabs>
 
 

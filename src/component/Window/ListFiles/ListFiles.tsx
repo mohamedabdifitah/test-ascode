@@ -1,9 +1,13 @@
 import Paper from '@material-ui/core/Paper';                  import Tabs from '@material-ui/core/Tabs';                    import Tab from '@material-ui/core/Tab';
 import "./ListFiles.css"
+import CloseIcon from '@material-ui/icons/Close';
+import {IoClose} from "react-icons/io5"
+import IconButton from '@material-ui/core/IconButton';
 interface Props {
  file:{
   icon:string,
   name:string,
+  cancel:any;
 
  }[],
 
@@ -29,10 +33,13 @@ const ListFiles = (props:Props) => {
   */
   console.log(props)
   function Files__header():JSX.Element[] {
-   return props.file.map((file,index) => { 
+   return props.file.map((File,index) => { 
      return (
-       <div className="list__files" key={index}> 
-       <img src={file.icon} />                                       <p className="file__name"> {file.name} </p>                   </div> 
+        <li>
+         <img className="image__file"  src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_html_icon_130541.png"></img>
+	 <p className="file__name"> {File.name} </p>
+	  <IoClose size={"20px"} color={"#33333"} />
+	  </li> 
      )})
      }
 
@@ -40,9 +47,11 @@ const ListFiles = (props:Props) => {
 
   
   return (
-   <>
-    {Files__header() }
-    </>
+   <div className="header__list__files">
+   <ul>
+    {Files__header()}
+    </ul>
+    </div>
 
   )
 

@@ -26,7 +26,9 @@ width:78%;
 }
 .Windows__header {
 height:5vh;
+/*
 background-color:#424242;;
+*/
 width:100%;
 }
 h1 {
@@ -34,4 +36,14 @@ position:absolute;
 top:5rem;
 
 }
+.MuiTab-wrapper > img {
+position:relative;
+top:8px;
+left:-4rem;
+height:40px;
+width:40px;
+}
+.MuiTab-wrapper > p {
+position:absolute;
 
+}
