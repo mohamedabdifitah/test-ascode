@@ -46,4 +46,12 @@ width:40px;
 .MuiTab-wrapper > p {
 position:absolute;
 
+
+}
+/*
+.MuiButtonBase-root .MuiTab-root .MuiTab-textColorInherit
+*/
+.Mui-selected {
+background-color:black;
+
 }

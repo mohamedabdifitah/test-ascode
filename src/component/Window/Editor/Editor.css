@@ -20,3 +20,60 @@ h4{
 background-color:#292929;
 
 }
+.primary__word {
+color:#4771cc;
+outline-width:0;
+}
+
+/*
+.react-codemirror2 {
+position:absolute;
+background-color:black;
+}
+.CodeMirror-code {
+position:absolute;
+
+}
+*/
+.code__section {
+position:relative;
+height:100%;
+width:100%;
+/*
+background-color:black;
+overflow:scroll;
+outline-width:0;
+*/
+}
+/*
+.line__numbers {
+outline-width:0px;
+font-size:8px;
+}
+*/
+
+
+.react-codemirror2 {
+position:relative !important;
+height:67rem!important ;
+width:100% !important;
+flex:1 !important;
+}
+
+.editor__comp{
+position:relative;
+display:flex;
+width:100%;
+height:100%;
+/*
+background-color:black;
+*/
+}
+.cm-s-material.CodeMirror {
+background-color:/*#343536*/ #222324 !important;
+height:100% !important;
+}
+.cm-s-material .CodeMirror-gutters {
+background-color:#222324 !important;
+overflow-x:hidden !important;
+}
