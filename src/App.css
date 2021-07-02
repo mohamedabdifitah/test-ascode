@@ -7,3 +7,19 @@ position:relative;
 top:0rem;
 height:80px;
 }
+.Sidebar-window-separator {
+position:absolute;
+top:4.1rem;
+left:16.45rem;
+height:60vh;
+
+width:1px;
+/*
+cursor:move;
+*/
+z-index:10;
+}
+.Sidebar-window-separator:hover{
+background-color:#4760ff;
+
+}

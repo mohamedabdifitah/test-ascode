@@ -4,6 +4,11 @@ import 'codemirror/theme/material.css'
 import 'codemirror/mode/xml/xml'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
+import 'codemirror/mode/python/python'
+import 'codemirror/mode/jsx/jsx'
+/*
+import 'codemirror/mode/typescript/typescript'
+*/
 import { Controlled as ControlledEditor } from 'react-codemirror2'
 
 interface Props {

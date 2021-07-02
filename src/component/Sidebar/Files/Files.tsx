@@ -110,7 +110,7 @@ const Files = () => {
 	  <div className="action__dir">
 	    <IconButton  className={classes.toggle} onClick={()=> {
 	    isToggle()}}>
-	     {toggle?<RiArrowDownSLine />:<RiArrowRightSLine />}
+	     {toggle?<RiArrowDownSLine style={{color:"white"}} />:<RiArrowRightSLine style={{color:"white"}}/>}
 	    <p className="dir__name">.ascode</p>
 	    </IconButton>
 	    </div>

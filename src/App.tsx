@@ -11,8 +11,14 @@ import Terminal from "./component/Terminal/Terminal"
 /*port Split from "split.js" 
 import Split from 'react-splitter';
 */
+/*
+import "./Splitter/Splitter"
+*/
+import "./Splitter/TouchSplitter"
 import SplitterLayout from 'react-splitter-layout';
+/*
 import 'react-splitter-layout/lib/index.css';
+*/
 function App() {
   /*
   const onSplitChanged = (primarySize: string) => {
@@ -29,8 +35,12 @@ function App() {
 
       <Setting />
        <Header />
-       <Sidebar />
+
+       <Sidebar/>
+        <div className="Sidebar-window-separator" draggable={true}>
+	</div>
         <Windows />
+	
        <Terminal />
     </div>
   );

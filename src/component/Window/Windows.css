@@ -17,10 +17,15 @@ height:60vh;
 position:absolute;
 
 top:4.1rem;
-
+/*
 left:-1rem;
+*/
+left:3rem;
+/*
+ * orginal one
 width:78%;
-
+*/
+width:74%;
 
 
 }
@@ -53,5 +58,20 @@ position:absolute;
 */
 .Mui-selected {
 background-color:black;
+
+}
+.MuiButtonBase-root.MuiTab-root.MuiTab-textColorInherit.Mui-selected {
+background-color:#222324 !important;
+}
+.file-layout-option{
+background-color:black;
+z-index:9;
+width:4%;
+
+}
+.Run-icon {
+height:10px;
+position:relative;
+
 
 }

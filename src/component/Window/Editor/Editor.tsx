@@ -91,7 +91,7 @@ function Editor() {
     className="code__section"
    >
     <EditorComp
-          language="javascript"
+          language="jsx"
           displayName="HTML"
           value={html}
           onChange={setHtml}

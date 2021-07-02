@@ -12,14 +12,10 @@ import Editor from "./Editor/Editor";
 function Windows() {
   return (                                                       <div className="Windows">
       <div className="Windows__header">
-       {/*<FileOpenerHeader />
-       <ScrollableTabsButtonAuto />
-       
-       <ListFiles file={[{icon:"hhh",name:"python",cancel:IoClose},{icon:"wow",name:"jsi",cancel:IoClose},{icon:"typescript",name:'typescript',cancel:IoClose},{icon:"https://en.m.wikiversity.org/wiki/Python#/media/File%3APython.svg",name:"main.py",cancel:IoClose},{icon:"https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_typescript_icon_130108.png",name:"src.ts",cancel:IoClose,},]} />
-       <GridListTile />
-      < CustomizedTabs />
-       */}
        <SimpleTabs />
+       <div className="file-layout-option">
+        <img className="Run-image" src="./asImages/Run.png" alt="mo"></img>
+	</div>
        </div>
         <Editor />
 

@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     overflow:"scroll",
+    width:'80%',
   },
   AppBar : {
    backgroundColor:"#2e2e2e",
@@ -95,7 +96,7 @@ function SimpleTabs() {
           <Tab
 
            draggable="true"
-	  icon={<BasicTabsOpener />} {...a11yProps(1)} 
+	  icon={<BasicTabsOpener />} 
 	  />
           <Tab label="Item Three" {...a11yProps(2)} />
 	  <Tab label="Item Two" {...a11yProps(1)} />                    <Tab label="Item Three" {...a11yProps(2)} />

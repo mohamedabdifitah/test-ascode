@@ -75,5 +75,7 @@ height:100% !important;
 }
 .cm-s-material .CodeMirror-gutters {
 background-color:#222324 !important;
-overflow-x:hidden !important;
+overflow-x:auto !important;
+position:stiky !important;
 }
+

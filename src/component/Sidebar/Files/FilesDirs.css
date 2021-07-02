@@ -1,4 +1,9 @@
 .file__icon {
 position:relative;
-left:-3px;
+left:-4px;
+
+}
+.file__name {
+flex:1;
+
 }
