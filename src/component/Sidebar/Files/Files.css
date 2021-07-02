@@ -30,7 +30,9 @@ top:-4px;
 
 }
 .Explore__files {
+/*
 background-color:blue;
+*/
 width:116.9%;
 padding:1px;
 align-items:center;
@@ -109,7 +111,9 @@ padding:2px;
 position:absolute;
 top:4rem;
 width:100%;
+/*
 background-color:blue;
+*/
 
 }
 .File__dir > ul {
@@ -146,7 +150,9 @@ opacity: 0.7;
 */
 }
 .each__file {
+/*
 background-color:black;
+*/
 width:100%;
 height:2rem;
 margin-bottom:4px;
