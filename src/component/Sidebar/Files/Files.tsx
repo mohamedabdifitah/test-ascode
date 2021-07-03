@@ -14,6 +14,7 @@ import FilesDirs from "./FilesDirs"
 import {data} from "../Data"
 import Modified from "./modified__section/Modified"
 import {makeStyles} from '@material-ui/core/styles';
+import FileData  from "./FileData"
 //interface
 interface File{
  Data:{
@@ -80,6 +81,7 @@ const Files = () => {
    const isToggle = () => {
      setToggle(!toggle)
    }
+   const {state,setState} = FileData()
    return (
        <div className="Files" >
         <Modified />

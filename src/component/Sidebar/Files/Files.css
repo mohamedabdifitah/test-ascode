@@ -10,7 +10,7 @@ width:14%;
 */
 width:19%;
 height:60vh;
-top:-56vh
+top:-56vh;
 
 }
 img {
@@ -41,12 +41,13 @@ align-items:center;
 /*
 background-color:#424242;
 */
+position:relative;
 display:flex;
 flex-direction:column;
 overflow:scroll;
 padding:1px;
 justify-content:space-between;
-width:116.5%;
+width:11.5rem;
 height:10rem;
 }
 .main__dir {
@@ -111,9 +112,11 @@ padding:2px;
 position:absolute;
 top:4rem;
 width:100%;
+left:3px;
 /*
 background-color:blue;
 */
+
 
 }
 .File__dir > ul {
@@ -150,10 +153,13 @@ opacity: 0.7;
 */
 }
 .each__file {
-/*
+
 background-color:black;
-*/
-width:100%;
+
+top:-9px;
+position:relative;
+left:-1.5rem;
+width:10rem;
 height:2rem;
 margin-bottom:4px;
 
