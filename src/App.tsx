@@ -40,7 +40,7 @@ function App() {
         <div className="Sidebar-window-separator" draggable={true}>
 	</div>
         <Windows />
-	
+	<div className="Terminal-window-separator" draggable={true} />
        <Terminal />
     </div>
   );

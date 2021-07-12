@@ -23,3 +23,9 @@ z-index:10;
 background-color:#4760ff;
 
 }
+.Terminal-windows-separator {
+position:absolute;
+width:60%;
+height:10px;
+background-color:blue;
+}

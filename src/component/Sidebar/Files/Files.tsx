@@ -15,6 +15,10 @@ import {data} from "../Data"
 import Modified from "./modified__section/Modified"
 import {makeStyles} from '@material-ui/core/styles';
 import FileData  from "./FileData"
+
+import FolderDirs from "./FolderDirs";
+import MainDirChildren from "./MainDirChildren"
+import TestData,{ImainDir}  from "./TestData";
 //interface
 interface File{
  Data:{
@@ -46,11 +50,25 @@ const Files = () => {
       }
    }
    )
+   /*
    const [Filedata,setFiledata] = useState<File["Data"]>([{
     "FileName":"Start",
     "icon":"hh",
     "type":"file",
    }])
+
+    ******* Folder Props 
+
+   const [Folderdata,setFolderdata] = useState<IFolder>()
+   useMemo(() => {
+    setFolderdata([
+     name:"src"
+     childrens:[
+      Filedata
+     ]
+
+    ])
+   },Folderdata)
    const FiledataHandler = (data:File["Data"])  => {
     console.log(data)
     /*
@@ -62,7 +80,6 @@ const Files = () => {
      ])
 
     })
-    */
     setFiledata(
      data
     )
@@ -73,15 +90,47 @@ const Files = () => {
     data.childrens.map((val,index)=>{
      FiledataHandler([val])
      */
+   /*
     FiledataHandler(data.childrens)
     
    },Filedata)
+   */
    const classes = useStyles() 
    const [toggle,setToggle] = useState(false);
    const isToggle = () => {
      setToggle(!toggle)
    }
+   const {mainDir} = TestData()
    const {state,setState} = FileData()
+   /*
+   function DirChildren(Dir:ImainDir){
+     return Dir.children.map((mainDirChildren,index)=>{
+
+
+     if(mainDirChildren.types=="file"){
+      return (
+       <FilesDirs file={[mainDirChildren]} />
+      )
+     }
+     else if(mainDirChildren.types=="folder"){
+       return(
+        <FolderDirs name={mainDirChildren.name} icon={mainDirChildren.icon} children={[mainDirChildren]} types={mainDirChildren.types}/>
+       )
+     }else{
+      return (
+       null
+      )
+
+     }
+     console.log(mainDirChildren)
+     
+     console.log(mainDirChildren,"hello")
+    })
+    
+    console.log(Dir)
+   }
+   */
+   
    return (
        <div className="Files" >
         <Modified />
@@ -113,7 +162,7 @@ const Files = () => {
 	    <IconButton  className={classes.toggle} onClick={()=> {
 	    isToggle()}}>
 	     {toggle?<RiArrowDownSLine style={{color:"white"}} />:<RiArrowRightSLine style={{color:"white"}}/>}
-	    <p className="dir__name">.ascode</p>
+	    <p className="dir__name">{mainDir.name}</p>
 	    </IconButton>
 	    </div>
 	    <div className="folder__icons">
@@ -139,8 +188,7 @@ const Files = () => {
 	     </div>
 	     </div>
 	   </div>
-	  {toggle? <FilesDirs file={Filedata}/>:""}
-	  {/*<FilesDirs file={Filedata} />*/}
+	   {toggle?<MainDirChildren name={mainDir.name} icon={mainDir.icon} children={mainDir.children} types={mainDir.types}/>:""}
        </div>
        </div>
   )

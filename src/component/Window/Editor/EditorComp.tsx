@@ -6,6 +6,7 @@ import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
 import 'codemirror/mode/python/python'
 import 'codemirror/mode/jsx/jsx'
+import 'codemirror/mode/django/django';
 /*
 import 'codemirror/mode/typescript/typescript'
 */
@@ -15,7 +16,8 @@ interface Props {
 language:string;
 displayName:string;
 value:any;
-onChange:any
+onChange:any;
+className:string
 }
 
 export default function EditorComp(props:Props) {
@@ -23,7 +25,8 @@ export default function EditorComp(props:Props) {
     language,
     displayName,
     value,
-    onChange
+    onChange,
+    className
   } = props
   const [open, setOpen] = useState(true)
 
@@ -41,7 +44,7 @@ export default function EditorComp(props:Props) {
   */
 
   return (
-  <div className="editor__comp">
+  <div className={className}>
    <ControlledEditor
         onBeforeChange={handleChange}
         value={value}
@@ -49,7 +52,8 @@ export default function EditorComp(props:Props) {
         className="code-mirror-wrapper"
         options={{
           lint: true,
-          mode: language,
+          mode:'javascript',
+	  minimode:"jsx",
           theme: 'material',
           lineNumbers: true,
 	  matchBrackets: true,
@@ -63,6 +67,29 @@ export default function EditorComp(props:Props) {
         }}
 	
       />
+      <div className="code__section__mirror">
+      <ControlledEditor 
+       onBeforeChange={handleChange}
+        value={value}
+
+        className="code-mirror-screen"
+        options={{
+          lint: true,
+          mode:'javascript',
+          minimode:"jsx",
+          theme: 'material',
+          lineNumbers: false,
+          matchBrackets: true,
+          smartIndent: true,
+          autoCloseBrackets: true,
+          autoCursor:true,
+          autocomplete:true,
+          extraKeys: {                                                      "Space": "autocomplete"
+        }
+        }}
+
+      />
+      </div>
    </div>
   )
 

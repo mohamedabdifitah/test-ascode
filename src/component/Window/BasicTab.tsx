@@ -42,7 +42,9 @@ function a11yProps(index: any) {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
+    /*
     flexGrow: 1,
+    */
     overflow:"scroll",
     width:'80%',
   },

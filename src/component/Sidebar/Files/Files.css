@@ -164,3 +164,18 @@ height:2rem;
 margin-bottom:4px;
 
 }
+
+.dir__childrenContainer {
+position:relative;
+top:5rem;
+width:100%;
+height:20vh;
+color:white;
+}
+.dir__children{
+position:relative;
+z-index:9;
+color:white;
+
+}
+

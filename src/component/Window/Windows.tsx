@@ -9,18 +9,72 @@ import {IoClose} from "react-icons/io5"
 import { GridListTile } from '@material-ui/core';
 import SimpleTabs from './BasicTab'
 import Editor from "./Editor/Editor";
+import EditorSetting from "./Editor/EditorSetting";
+import React ,{useState,useRef,useEffect} from "react";
+import ConstructWindows from "./ConstructWindows"
 function Windows() {
-  return (                                                       <div className="Windows">
-      <div className="Windows__header">
-       <SimpleTabs />
-       <div className="file-layout-option">
-        <img className="Run-image" src="./asImages/Run.png" alt="mo"></img>
+  /*
+  const EditorLayoutCounter = Editor()
+  
+  console.log(EditorLayoutCounter)
+  */
+  const[height,setheight] = useState("100%")
+  const [width,setwidth] = useState("100%")
+  /*const EditorScreens = useRef(1)*/
+  const [EditorScreens,setEditorScreens] = useState(1) 
+  /*
+  function constructEditors(Editors:number){
+   if(Editors==0){
+    alert("hello")
+   }else{
+    for (var EditorScreen =0;EditorScreen <= Editors;EditorScreen++){
+     return (
+       <Editor height={height} setheight={setheight} width={width} setwidth={setwidth} />
+     )
+    }
+
+   }
+  }
+  */
+  /*
+  useEffect(()=>{
+  const WidthRange = 100 / EditorScreens 
+  setwidth(`${WidthRange}%`)
+
+
+  },[EditorScreens])
+  */
+  function WindowsSplitter(){
+   if(EditorScreens==1){
+    return (
+      <ConstructWindows EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
+    )
+   }else{
+    for(var loop = 0; loop < EditorScreens;loop++){
+     return(
+       <ConstructWindows EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
+     )
+
+      
+
+   }}
+
+  }
+  return (                                                       
+  <div className="Windows" >
+      {/*
+      <div className="Windows__editor">
+       <div className="Windows__header">
+        <SimpleTabs />
+        <EditorSetting EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
+       </div>
+         <Editor height={height} setheight={setheight} width={width} setwidth={setwidth} EditorScreens={EditorScreens} />
+	 
 	</div>
-       </div>
-        <Editor />
-
-       </div>
-
+	*/}
+         <ConstructWindows EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
+	</div>
+     
   )
 }
 export default Windows

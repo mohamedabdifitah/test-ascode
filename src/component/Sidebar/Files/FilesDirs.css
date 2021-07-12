@@ -1,9 +1,12 @@
 .file__icon {
 position:relative;
-left:-0.8rem
-
+height:20px;
+width:20px;
 }
 .file__name {
 flex:1;
 
+}
+.file__dirs{
+position:relative;
 }

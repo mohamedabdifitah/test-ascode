@@ -10,6 +10,9 @@ background-color:#424242;
 */
 position:relative;
 display:flex;
+/*
+grid-template-columns:1fr 1fr;
+*/
 border:1px solid #1c1a1a;
 color:white;
 margin-left:22%;
@@ -62,16 +65,57 @@ background-color:black;
 }
 .MuiButtonBase-root.MuiTab-root.MuiTab-textColorInherit.Mui-selected {
 background-color:#222324 !important;
+
 }
+/*
 .file-layout-option{
 background-color:black;
 z-index:9;
 width:4%;
-
+left:10rem;
+width:80px;
 }
 .Run-icon {
 height:10px;
 position:relative;
 
 
+}
+.Editor__setting {
+background-color:blue;
+position:absolute;
+width:50px;
+top:2rem;
+left:9rem;
+width:30px;
+z-index:10;
+}
+*/
+
+.file__layout__setting{
+display:flex;
+position:relative;
+width:22%;
+height:90%;
+z-index:10;
+top:-6rem;
+left:35rem;
+
+}
+
+.run__file__icon {
+
+position:relative;
+left:10px;
+
+}
+.file__layout__icon {
+position:relative;
+left:4px;
+
+}
+.Windows__editor{
+width:100%;
+height:100%;
+display:flex;
 }

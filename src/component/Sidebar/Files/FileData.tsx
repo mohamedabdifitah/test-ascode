@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import axios from "axios"
 
 
@@ -6,10 +6,11 @@ interface FileProps{
  name:string,
  body:string,
 }
-interface WindowProps{
+interface IWindowProps{
  name:string,
- children:array<string>,
-}[]
+ children:Array<string>,
+
+}
 /*
 interface FileProps{
  name:string,
@@ -18,10 +19,10 @@ interface FileProps{
 },
 */
 function FileData(){
- const [state,setState] = React.useState<WindowProps>()
-return{
- state,
- setState,
+ const [state,setState] = useState<IWindowProps>()
+ return {
+  state,
+  setState,
 
   }
 }

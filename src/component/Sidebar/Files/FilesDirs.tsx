@@ -1,13 +1,9 @@
 import React,{useEffect} from "react"
 import "./FilesDirs.css"
-interface Props {
-file:{
-FileName:string,
-icon:string,
-type:string,
-}[]
-}
-const FilesDirs = (props:Props)=> {
+import {IDirChildren} from "./MainDirChildren"
+
+const FilesDirs = (props:IDirChildren["file"])=> {
+ /*
  console.log(props)
  const fileview = ():JSX.Element[] => {
    return props.file.map((val,index) => {
@@ -15,7 +11,7 @@ const FilesDirs = (props:Props)=> {
         <div draggable={true} className="each__file">
 	<li>
          <img className="file__icon" src ={val.icon}/>
-         <p className="file__name">{val.FileName}</p>
+         <p className="file__name">{val.name}</p>
 	 </li>
 	 </div>
 
@@ -25,13 +21,14 @@ const FilesDirs = (props:Props)=> {
 
  }
  console.log(props)
+ */
  return (
-    <div className="File__dir">
-     <ul>
-     {fileview()}
-     </ul>
-
-    </div>
+   
+    <div className="fle__dirs">
+     
+     <img className="file__icon" src={props.icon} />
+     <p> {props.name} </p>
+     </div>
  )
 }
 export default FilesDirs
