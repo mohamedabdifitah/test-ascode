@@ -3,7 +3,7 @@ import {BsLayoutSplit} from "react-icons/bs";
 import IconButton from '@material-ui/core/IconButton';
 import Editor from "./Editor";
 import {BiGitPullRequest} from "react-icons/bi";
-import React,{useRef} from "react";
+import React,{useRef,useState,useEffect} from "react";
 import EditorSplitter from "./EditorSplitter"
 interface Iprops {
 EditorScreens: number,
@@ -17,8 +17,14 @@ function EditorSetting(props:Iprops){
   props.setEditorScreens(props.EditorScreens+1)
   alert(props.EditorScreens)
  }
+ const [FileOptionWidth , setFileOptionWidth] = useState("30%")
+ useEffect(()=>{
+  if(props.EditorScreens==2){
+   setFileOptionWidth("50%")
+   }
+  },[props.EditorScreens])
  return(
-    <div className="file__layout__setting">
+    <div className="file__layout__setting" style={{width:FileOptionWidth}}>
       <IconButton onClick={()=> windowScreenSizer()} style={{color:"white",position:"relative",left:"1.5rem"}}>
       <BsLayoutSplit style={{fontSize:"30px"}} />
       </IconButton>

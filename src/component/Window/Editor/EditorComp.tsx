@@ -1,6 +1,12 @@
 import React, { useState,useRef } from 'react'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/material.css'
+import 'codemirror/theme/monokai.css';
+import 'codemirror/theme/eclipse.css'
+import 'codemirror/theme/erlang-dark.css';
+import 'codemirror/theme/night.css'
+import 'codemirror/theme/neo.css';
+import 'codemirror/theme/darcula.css';
 import 'codemirror/mode/xml/xml'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'

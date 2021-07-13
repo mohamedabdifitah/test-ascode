@@ -16,7 +16,7 @@ setEditorScreens:React.Dispatch<React.SetStateAction<number>>,
 function ConstructWindows(props:Iprops){
   const {
    EditorScreens,
-   setEditorScreens
+   setEditorScreens,
 
   }=props
   const[height,setheight] = useState("100%")
@@ -28,11 +28,11 @@ function ConstructWindows(props:Iprops){
   const WidthRange = 100 / EditorScreens;                                     setwidth(`${WidthRange}%`)                                                
 
   },[EditorScreens])
+
   
   return (
-   <div className="Windows__editor">
-    <div className="Windows__header">
-     
+   <div className="Windows__editor" style={{width:width}}>
+    <div className="Windows__header"> 
      <SimpleTabs />
     <EditorSetting EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
        </div>

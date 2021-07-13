@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     */
     overflow:"scroll",
-    width:'80%',
+    width:'70%',
   },
   AppBar : {
    backgroundColor:"#2e2e2e",

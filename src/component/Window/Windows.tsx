@@ -44,35 +44,28 @@ function Windows() {
 
   },[EditorScreens])
   */
+  {/*
   function WindowsSplitter(){
    if(EditorScreens==1){
     return (
-      <ConstructWindows EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
+      <ConstructWindows widthRange={"50%"} EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
     )
    }else{
-    for(var loop = 0; loop < EditorScreens;loop++){
+   
      return(
-       <ConstructWindows EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
+       <div style={{gridTemplateRows:"1fr 1fr"}}>
+       <ConstructWindows  widthRang={"50%"}EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
+       <ConstructWindows widthRange={"50%"} EditorScreens={EditorScreens} setEditorScreens={setEditorScreens} />
+       </div>
      )
-
       
-
-   }}
+   }
 
   }
+  */}
   return (                                                       
   <div className="Windows" >
-      {/*
-      <div className="Windows__editor">
-       <div className="Windows__header">
-        <SimpleTabs />
-        <EditorSetting EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
-       </div>
-         <Editor height={height} setheight={setheight} width={width} setwidth={setwidth} EditorScreens={EditorScreens} />
-	 
-	</div>
-	*/}
-         <ConstructWindows EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
+   *<ConstructWindows EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
 	</div>
      
   )

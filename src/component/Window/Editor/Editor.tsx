@@ -225,9 +225,10 @@ function Editor(props:Iprops) {
      </div>
    </div>
    */}
-   
-   {constructEditors(props.EditorScreens)}
-
+   {/*{constructEditors(props.EditorScreens)}*/}
+   <div className="code__section" /* style={{width:props.width}}*/ >
+   <EditorComp                                                       language="python"                                                 displayName="HTML"                                                value={EditorState}                                               onChange={setEditorState}                                         className={"editor__comp"}                                        />
+   </div>
   </div>
 
  )
