@@ -12,6 +12,8 @@ import SimpleTabs from "../BasicTab";
 import EditorSetting from "./EditorSetting"
 import "../WindowsSplitter.js"
 import EditorSplitter from "./EditorSplitter"
+import EditorModal from './EditorModal';
+import LanguageFetcher from "../../../languages/index"
 interface Iprops {
 height:string,
 setheight:React.Dispatch<React.SetStateAction<string>>,
@@ -169,6 +171,22 @@ function Editor(props:Iprops) {
   const EditorRef  = useRef <HTMLDivElement>(null)
   const[EditorState,setEditorState] = useState("")
   const[EditorState1,setEditorState1] = useState("")
+  const [lang,setLang] = useState("javascript")
+  /*
+   * making snippet syntax checking
+   */
+  /*
+  useEffect(()=>{
+    const SnippetSearch = /!\n/i;
+   /* setEditorState(EditorState.replace(SnippetSearch,"<!DOCTYPE html>\n \t<html> \n \t \t<head>\n \t \t <title>Title of the document</title>\n\t</head>\n \t <body>The content of the document......</body>\n</html>"))*/
+    /*setEditorState(EditorState.replace(regex2,"!!"))*/
+    /*
+    const regex  = /\w/i;
+    setEditorState(EditorState.replace(regex,`<${EditorState}> </${EditorState}>`))
+
+
+  },[EditorState])
+  */
   return (
    <div className="Editor__section" /*style={{display:props.EditorScreens? "flex":"grid" }}*/ ref={EditorRef}>
    {/*
@@ -227,7 +245,14 @@ function Editor(props:Iprops) {
    */}
    {/*{constructEditors(props.EditorScreens)}*/}
    <div className="code__section" /* style={{width:props.width}}*/ >
-   <EditorComp                                                       language="python"                                                 displayName="HTML"                                                value={EditorState}                                               onChange={setEditorState}                                         className={"editor__comp"}                                        />
+   <EditorComp                                                    
+   language={lang}                                             
+   displayName="HTML"                                                
+   value={EditorState}                                               
+   onChange={setEditorState}                                      
+   className={"editor__comp"}   
+   />
+   {/*<EditorModal/>*/}
    </div>
   </div>
 

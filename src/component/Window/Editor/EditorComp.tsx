@@ -1,5 +1,6 @@
-import React, { useState,useRef } from 'react'
+import React, { useState,useRef,useEffect } from 'react'
 import 'codemirror/lib/codemirror.css'
+import 'codemirror/lib/codemirror.js';
 import 'codemirror/theme/material.css'
 import 'codemirror/theme/monokai.css';
 import 'codemirror/theme/eclipse.css'
@@ -14,14 +15,88 @@ import 'codemirror/mode/python/python'
 import 'codemirror/mode/jsx/jsx'
 import 'codemirror/mode/django/django';
 /*
-import 'codemirror/mode/typescript/typescript'
-*/
-import { Controlled as ControlledEditor } from 'react-codemirror2'
+ * scroll bars
+ */
+import 'codemirror/addon/scroll/annotatescrollbar.js'
+import 'codemirror/addon/scroll/simplescrollbars.js';
+import 'codemirror/addon/scroll/simplescrollbars.css';
+/*
+ * Tern
+ */
+import 'codemirror/addon/tern/tern.js';
+import 'codemirror/addon/tern/worker.js';
+import 'codemirror/addon/tern/tern.css';
+/*
+ * dialog 
+ */
+import 'codemirror/addon/dialog/dialog.js';
+import 'codemirror/addon/dialog/dialog.css';
 
+/*
+ * searchCursor
+ */
+import 'codemirror/addon/search/searchcursor.js';
+/*
+ * autoComplete import 
+ */
+import 'codemirror/addon/hint/show-hint.js';
+import 'codemirror/addon/hint/javascript-hint.js'
+import 'codemirror/addon/hint/show-hint.css'
+import 'codemirror/addon/hint/anyword-hint.js';
+import 'codemirror/addon/hint/html-hint.js';
+import 'codemirror/addon/hint/css-hint.js';
+import 'codemirror/addon/hint/sql-hint.js';
+import 'codemirror/addon/hint/xml-hint.js';
+
+/*
+ * matchbrackets
+ */
+import 'codemirror/addon/edit/matchbrackets.js'
+import 'codemirror/addon/edit/closebrackets.js';
+import 'codemirror/mode/meta.js';
+/*
+ * comments
+ */
+import 'codemirror/addon/comment/comment.js';
+/*
+ * textarea autocomplete
+ */
+/*
+ * search/match-highlighter.js
+ */
+import 'codemirror/addon/search/match-highlighter.js';
+/*
+ * lint
+ */
+import 'codemirror/addon/lint/lint.js';
+/*
+ *selection/mark-selection.js
+ */
+import 'codemirror/addon/selection/mark-selection.js';
+/*
+ *selection/active-line.js
+ */
+import 'codemirror/addon/selection/active-line.js';
+/*
+ *selection/selection-pointer.js
+ */
+import 'codemirror/addon/selection/selection-pointer.js';
+/*
+ *comment/continuecomment.js
+ */
+import 'codemirror/addon/comment/continuecomment.js';
+/*
+ * merge/merge.js
+ */
+import 'codemirror/addon/merge/merge.js';
+import EditorModal from './EditorModal';
+import SimpleModal from './EditorModalComp';
+import LanguageFetcher from "../../../languages/index"
+import { Controlled as ControlledEditor } from 'react-codemirror2'
 interface Props {
 language:string;
 displayName:string;
-value:any;
+value:string;
 onChange:any;
 className:string
 }
@@ -34,11 +109,23 @@ export default function EditorComp(props:Props) {
     onChange,
     className
   } = props
+  const [lineChar,setlineChar] = useState({line:0,ch:0,sticky:null})
   const [open, setOpen] = useState(true)
-
+  const [cursorPosition,setCursorPosition] = useState()
+  /*
   function handleChange(editor:any, data:any, value:any) {
+    const doc = editor.getDoc()
+    console.log(doc)
+    const cursor = doc.getCursor()
+    //setlineChar(cursor)
+    console.log(cursor)
+    setlineChar(cursor)
+    console.log(lineChar)
+
+
     onChange(value)
   }
+  */
   /*
   const codemirrorRef = React.useRef();
   React.useEffect(() => {
@@ -48,41 +135,154 @@ export default function EditorComp(props:Props) {
   /*
   const EditorRef = useRef()
   */
+  /*const x_axis = useRef(323)
+  const y_axis = useRef(182)
+  */
+  const [x_axis,set_x_axis] = useState(30)
+  const [y_axis,set_y_axis] = useState(25)
+  const[setterValue,setSetterValue] = useState("")
+  var editorRef = useRef("")
+  var doc = useRef("");
+  console.log(editorRef.current)
+  function OnInputHandler(e:InputEvent,value:string,close:any){
+   alert(value)
+  }
+   var codeSection = document.querySelector('.react-codemirror2.code-mirror-wrapper')
+   /*window.addEventListener('mousemove',function(e){
+    /*x_axis.current = e.x
+    y_axis.current = e.y
+    */
+    /*
+    set_x_aixs(e.x)
+    set_y_axis(e.y)
+   })
+   */
+   /*
+   useEffect(()=>{
+    window.addEventListener('mousemove',function(e){
+     set_x_axis(e.x)
+     set_y_axis(e.y)
+     }
+     )
 
+   },[])
+   */
+  useEffect(()=>{
+  LanguageFetcher(language,value,onChange)
+  },[value])
+  /*
+  useEffect(()=>{
+   /*console.log(codeSection?.getSelection())*/
+  /*
+  codeSection?.addEventListener('mousemove',(e)=>{
+   console.log(e)
+
+  })
+  
+  
+  },[value])
+  */
+  const ModalRef = useRef(true)
+  const [ModalOpen,setModalOpen] = useState(false)
+  /*var input = prompt('Enter on/off')*/
+  /*var splitCode = "";
+  splitCode = (value.split(' '))
+  */
+  React.useEffect(()=>{                                                            if(value=="") {                                                               
+   setModalOpen(ModalOpen)
+  /*}else if(value.match(/\w\s/g) || value.match(/\s/g)){
+   setModalOpen(false)
+  */}else{
+  setModalOpen(true)                                                        
+  }                                                                                },[value])
+  
+  //const[setterValue,setSetterValue] = useState("")
+  console.log(doc,"hh")
+  //const editorRef= useRef('')
   return (
   <div className={className}>
    <ControlledEditor
-        onBeforeChange={handleChange}
+        onBeforeChange={(editor,data,value)=>{
+	onChange(value)
+	editorRef.current = editor
+	doc.current = editor.getDoc()
+	const cursor = doc.current.getCursor()
+	setlineChar(cursor)
+	setSetterValue(doc.current.getValue('\s'))
+	}}
         value={value}
-
         className="code-mirror-wrapper"
         options={{
+	  moveOnDrag:true,
+	  fixedGutter:false,
+	  coverGutterNextToScrollbar:true,
+	  lineWiseCopyCut:true,
+	  autofocus:true,
+	  addModeClass:true,
+	  spellcheck:true,
+	  fullLines:true,
+	  alignWithWord:false,
+	  blockComment:true,
+	  highlightSelectionMatches:true,
+	  styleActiveLine:true,
+	  //nonEmpty:true,
+	  selectionPointer:'true',
+	  continueComments:false,
+	  continueLineComment:true,
+	  //scrollbarStyle:'annotateScrollbar',
+	  showDifferences:true,
+	  /*
+	   *
+	   */
+	  //highlightSelectionMatches:true,
+	  /*
+	   *  above is my later options 
+	   */
+
           lint: true,
-          mode:'javascript',
-	  minimode:"jsx",
+          mode:{ name: "javascript", typescript: true },
+	  //typescript:true,
+	 // minimode:'Typescript',
+	 /* minimode:"css",*/
           theme: 'material',
           lineNumbers: true,
-	  matchBrackets: true,
+	  matchBrackets: 'true',
+	  highlightNonMatching:true,
+	  strict:true,
 	  smartIndent: true,
 	  autoCloseBrackets: true,
 	  autoCursor:true,
-	  autocomplete:true,
-	  extraKeys: {
-          "Space": "autocomplete"
-        }
+
+	  extraKeys:{
+	   'Ctrl-Space':'autocomplete',
+	   /*'Ctrl-/': codeMirror.toggleLineComment({
+	   indent: true,
+	   padding: " "
+	   }),
+	   */
+	   /*'Ctrl-up':editorRef.current.execCommand('swapLineDown')*/
+	   }
+	  
         }}
 	
       />
+      
+      <EditorModal on={ModalOpen} lineChar={lineChar} setlineChar={setlineChar}  x_axis={x_axis} set_x_axis={set_x_axis}  y_axis={y_axis} set_y_axis={set_y_axis} lang={language} code={value} onChange={onChange}  setModalOpen={setModalOpen} setterValue={setterValue} doc={doc} /*set_x_aixs={set_x_aixs} set_y_axis={set_y_axis}*/>
+       {value}
+      </EditorModal>
+      {/*<SimpleModal />*/}
       <div className="code__section__mirror">
       <ControlledEditor 
-       onBeforeChange={handleChange}
+       onBeforeChange={(editor,data,value)=>{
+       onChange(value);
+       //console.log(editor.getDoc.getValue())
+       }}
         value={value}
 
         className="code-mirror-screen"
         options={{
           lint: true,
-          mode:'javascript',
-          minimode:"jsx",
+          mode:'xml',
           theme: 'material',
           lineNumbers: false,
           matchBrackets: true,
