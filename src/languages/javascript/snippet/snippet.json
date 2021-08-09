@@ -1,0 +1,20 @@
+[
+	{
+		"for":"for(i=0;i<arr.length;i++){\n\tconsole.log(arr[i])\n}",
+		"regex":"/!for/g",
+		"description":"for loop"
+
+	},
+	{
+		"function":"function hello(greeting){\n\t return greeting\n}",
+		"regex":"/!fi/g",
+		"description":"function"
+	},
+	{
+		"arrow-function":"const hello(pr1,pr2)=> { \n\t return pr1*pr2\n}"
+	}
+
+	
+
+
+]
