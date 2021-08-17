@@ -1,10 +1,21 @@
 import * as jsSnippet from "./snippet/snippet.json";
-
-const javascriptSnippetMakert = (lang:string,code:string,onChange:any)=>{
+import * as acorn from "acorn";
+import * as espirma from "espirma";
+//const { default: json } = await import("./test.json", { assert: { type: "json" } });
+//console.log(json.hello);
+function getVarsNames(v = {}){
+    // getting keys or names !
+    let names = Object.keys(v);
+    // return array contain all names of variables
+    return names;
+}
+const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:any)=>{
 	/*var keywords=[
 		"await","break","case","catch","class","const","continue","debugger","default","delete","do","else","enum","export","extends","false","finally","for","function","if","implements","import","in","instanceof","interface" ,"let","new","null" "package","private","protected","public","return","super","switch","static","this","throw","try","true","typeof","var""void","while","with","yield",
 	]
 	*/
+      // var suggestion = []
+       //console.log(doc?.current?.getValue("\s"),"***************£££")
        var ArrayMethods = {
 	       "concat()":"Joins two or more arrays, and returns a copy of the joined arrays",
 	       "copyWithin()":"Copies array elements within the array, to and from specified positions",
@@ -71,9 +82,8 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any)=>{
 
        }
        console.log(StringMethods)
-       //var suggestion = [keywords]
-       var keywords;
-        keywords=[
+       
+       var keywords =[
 	       "await","break","case","catch","class",
 	       "const","continue","debugger","default",	"delete",
 	       "do","else","enum","export","extends",
@@ -85,6 +95,7 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any)=>{
 	       "typeof","var","void","while","with","yield",
 	       
        ]
+       var suggestion = [keywords]
        /*for(key,value in ArrayMethods){
 	       keywords.push(key)
 
@@ -101,10 +112,74 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any)=>{
 	       keywords=[Object.keys(ArrayMethods)]
        }
        */
+       var line ;
+       if(code.match(/function/g)){
+	       code.split(code)
+       }
+       line = code.split("\n")
+       var char = [
 
-       var suggestion = keywords
 
-	return keywords
+       ]
+       var variableNames = []
+       var functionNames= []
+       for (let i = 0; i < line.length; i++) {
+	       if(line[i].match(/^const/i) || line[i].match(/^var/i) || line[i].match(/^let/i)){
+		       var variableSplitter = line[i].split(/=/)
+		       var declarationType = variableSplitter[0].split(" ")[0]
+		       var variableName = variableSplitter[0].split(" ")[1]
+		       var {variableValue} = "undefined";
+		       if(variableSplitter[1]){
+			       variableValue = variableSplitter[1]
+
+		       }
+		       variableNames.push({declarationType,variableName,variableValue,})
+		       /*function getVarsNames(v = {}){
+			       // getting keys or names !
+			       let names = Object.keys(v);
+			       // return array contain all names of variables 
+			       return names;
+		       
+		       }*/
+		      console.log(variableSplitter,"variableSplitter")
+
+
+
+	       }else if(line[i].match(/^function/i)){
+		    var functionSplitter = line[i].split("{")
+		    //console.log(functionSplitter,"functionSplitter")
+		    /*
+		     * function hello(){
+		     *   return hello 
+		     *
+		     * }
+		     */
+
+	       }
+       }
+       console.log(line)
+       console.log(variableNames)
+       /*for(let i=0; i < keywords.length;i++){
+	       suggestion.push(keywords[i])
+
+       }
+       */
+       //suggestion.append(keywords)
+       variableNames.forEach(elem => suggestion.push(elem.variableName))
+       //alert(variableNames.length)
+       //suggestion.push(variableNames[i].variableName)
+       /*for(let i=0;i < variableNames.length;i++){
+	       suggestion.push(variableNames[i].variableName)
+	      // alert(variableNames[i].variableName)
+       }
+       */
+       
+       // console.log(doc.current)
+       console.log(jsSnippet)
+       //console.log(json.hello);
+        suggestion = suggestion.flat(Infinity)
+        console.log(suggestion,"javascript extension")
+	return suggestion
 
 }
 

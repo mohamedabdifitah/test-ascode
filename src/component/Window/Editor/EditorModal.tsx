@@ -4,6 +4,10 @@ import React,{useRef} from 'react'
 import LanguageFetcher from '../../../languages/index'
 import {Button} from '@material-ui/core';
 import {BsInfo} from "react-icons/bs"
+import * as acorn from "acorn";
+import * as esprima from 'esprima';
+import * as aulx from 'aulx';
+import * as CodeMirror from 'codemirror/lib/codemirror.js';
 /*
 var data= LanguageFetcher(props.lang,props.code,props.onChange)
 */
@@ -188,25 +192,39 @@ if(props.on == true){
  //alert(props.doc)
  //props.code.split(/[\n\s;]+/)
  //alert(lasModifiedCode)
+ var program = props.doc.current.getValue()
+ console.log(typeof([props.doc.current.getValue()].join(" ")))
+ //console.log(esprima.tokenize([(props.doc.current.getValue())].join(" ")))
+ //program = program.replace(/([""'']+)/g,"")
+ //var tokenize = esprima.tokenize(program,{range:true,loc:true})
+  //console.log(esprima.parse(program))
+ //console.log(acorn.parse(program,{ecmaVersion: 2016}))
+ //var editor = CodeMirror.fromTextArea(document.querySelector('.react-codemirror.code-mirror-wrapper'));
+ //var aulxui = new AulxUI.CM(editor);
+ // or simply ...
+ //new AulxUI.CM(idOfTextbox);
+ // And that's it. Your editor now features JS autocompletion.
+ console.log(props.doc)
  return (
   <div className="code-complete-modal" id="code-complete-modal" ref={EditorRef} style={{top:props.y_axis,left:props.x_axis,  }} 
   >
    {/*props.children*/}
    <ul className="list-of-suggestion">
      
-     {data?.filter((val:string)=>{
+     {data?.filter((val)=>{
      if(props.code==""){
       return val
      }else{
       /*
        * default code is else if(val.includes(props.code)
        */
-      var lasModifiedCode = props.code.split(/[\n\s;(:?.]+/)
-      if(val.includes(lasModifiedCode[lasModifiedCode.length-1])){
+      // var lasModifiedCode = props.code.split('\n') //split(/[\n\s;(:?.]+/)
+       //var lastMCode = lasModifiedCode[props.lineChar.line]//.split(/[\s\t:.]/)
+       //console.log(lastMCode)
+       if(val.includes(props.code.split(/[\n.]+/))){
         //alert(props.code.split(/[\n\s;]+/))
 	return val
-       }
-     }}).map((elem,index) => <li className="item-of-suggestion"> <button  className="button-suggestion" onClick={()=> alert(index)}> <p className="text-of-suggestion">{elem }</p> <p> description </p></button>  <BsInfo style={{position:"relative"}}/></li>)}  
+       }}}).map((elem,index) => <li className="item-of-suggestion" key={index}> <button  className="button-suggestion" onClick={()=> alert(index)}> <p className="text-of-suggestion">{elem }</p> {/*<p> description </p>*/}</button>  <BsInfo style={{position:"relative"}}/></li>)}
    </ul>
    {x_axis}
    ||

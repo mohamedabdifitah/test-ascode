@@ -1,6 +1,6 @@
 import React, { useState,useRef,useEffect } from 'react'
 import 'codemirror/lib/codemirror.css'
-import 'codemirror/lib/codemirror.js';
+import * as CodeMirror from 'codemirror/lib/codemirror.js';
 import 'codemirror/theme/material.css'
 import 'codemirror/theme/monokai.css';
 import 'codemirror/theme/eclipse.css'
@@ -92,6 +92,11 @@ import 'codemirror/addon/merge/merge.js';
 import EditorModal from './EditorModal';
 import SimpleModal from './EditorModalComp';
 import LanguageFetcher from "../../../languages/index"
+/*
+ * js external libary autocomplete
+ */
+import* as Aulx from 'aulx';
+import AulxUI from 'aulx/aulx-ui.js';
 import { Controlled as ControlledEditor } from 'react-codemirror2'
 interface Props {
 language:string;
@@ -198,7 +203,16 @@ export default function EditorComp(props:Props) {
   
   //const[setterValue,setSetterValue] = useState("")
   console.log(doc,"hh")
+  const CodemirrorRef = useRef<HTMLElement>("")
   //const editorRef= useRef('')
+  console.log(CodemirrorRef)
+  //var editorReferrence = CodeMirror.fromTextArea(document.querySelector('.react-codemirror.code-mirror-wrapper'));
+  //var aulxui = new AulxUI.CM(CodemirrorRef.current.doc);
+  //console.log(AulxUI)
+  // or simply ...
+  //new AulxUI.CM(idOfTextbox);
+  // And that's it. Your editor now features JS autocompletion.
+
   return (
   <div className={className}>
    <ControlledEditor
@@ -208,10 +222,15 @@ export default function EditorComp(props:Props) {
 	doc.current = editor.getDoc()
 	const cursor = doc.current.getCursor()
 	setlineChar(cursor)
+	//console.log(CodemirrorRef.current.doc.getOption("mode"),"for CodemirrorRef")
+	console.log(editor.getOption("mode"))
+	//var aulxui = new AulxUI.CM(editorRef.current)
 	setSetterValue(doc.current.getValue('\s'))
 	}}
         value={value}
+	ref={CodemirrorRef}
         className="code-mirror-wrapper"
+	id="codemirror"
         options={{
 	  moveOnDrag:true,
 	  fixedGutter:false,
@@ -240,7 +259,7 @@ export default function EditorComp(props:Props) {
 	   */
 
           lint: true,
-          mode:{ name: "javascript", typescript: true },
+          mode:language,
 	  //typescript:true,
 	 // minimode:'Typescript',
 	 /* minimode:"css",*/
