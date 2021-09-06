@@ -29,14 +29,7 @@
 	},
 	{
 		"keywords":[
-			{
-				"name":"var",
-				"regex":"/var/",
-				"description":"",
-				"type":"keyword"
-				
-
-			},
+	
 			{
 				"name":"await",
 				"regex":"/await/",
@@ -46,7 +39,7 @@
 			},
 			{
 				"name":"break",
-				"regex":"/break/",
+				"regex":"/break/g",
 				"description":"",
 				"type":"keyword"
 

@@ -8,6 +8,7 @@ import * as acorn from "acorn";
 import * as esprima from 'esprima';
 import * as aulx from 'aulx';
 import * as CodeMirror from 'codemirror/lib/codemirror.js';
+import Popover from '@material-ui/core/Popover';
 /*
 var data= LanguageFetcher(props.lang,props.code,props.onChange)
 */
@@ -38,6 +39,54 @@ set_y_axis:React.Dispatch<React.SetStateAction<number>>
 lineChar:{line:number,ch:number,sticky:null},
 setlineChar:React.Dispatch<React.SetStateAction<{line:number,ch:number,sticky:null}>>,
 
+
+}
+export function makeDescript(val:object,Parent:HTMLElement){
+ if(val == "" || Parent == ""){
+  return null
+ }else{
+  Parent.addEventListener("mouseover", function( event ) {
+   Parent.appendChild(<Popover />)
+ })
+
+}
+}
+export function fetchTextForSearch(code:string,line:number,ch:number){
+ if(code == "" || code == undefined || code == null){
+  return -1
+ }
+ var linesOfCode = code.split(/\n/)
+ var currentLine = linesOfCode[line]
+ //var groupsOfCode = currentLine.split(/[.\s\t]/)
+ /*
+ for ( let i=ch;i < currentLine.length; i++){
+  console.log(currentLine[i])
+  //currentGroupCode.push(currentLine[i])
+  if(currentLine[i] == "\s" || currentLine[i] == "\t"){
+   console.log(currentLine[i])
+
+  }
+  currentGroupCode.push(currentLine[i])
+
+ }
+ */
+ /*
+ groupsOfCode.forEach(element=>{
+  if(ch < element.length - 1){
+   currentGroupCode.push(element)
+   console.log(element,"element")
+
+  }
+ })
+ */
+ var groupsOfCode = esprima.tokenize(currentLine,{range:true,loc:true,comment:true})
+ groupsOfCode.filter((codeOfGroup)=> {
+  return codeOfGroup.loc.start.column== ch
+  })
+  //alert(groupsOfCode)
+  console.log(groupsOfCode)
+  var currentCode = groupsOfCode.value
+ return currentCode
 
 }
 function ModalPosition(props:IModalPosition){
@@ -142,7 +191,10 @@ export default function EditorModal(props:Iprops){
  setlineChar,
  }
  ModalPosition(ModalPositionProps)
+ var functions = {
+  makeDescript,
 
+ }
 const codeSelection = document.querySelector('.react-codemirror.code-mirror-wrapper')
 /*
 React.useEffect(()=>{  
@@ -201,10 +253,45 @@ if(props.on == true){
  //console.log(acorn.parse(program,{ecmaVersion: 2016}))
  //var editor = CodeMirror.fromTextArea(document.querySelector('.react-codemirror.code-mirror-wrapper'));
  //var aulxui = new AulxUI.CM(editor);
+ var found = []
+ function findAll(string,searchText) {
+  var startIdx = string.search(searchText);
+  var endIdx = startIdx + searchText.length;
+  if(startIdx == -1) {
+    return;
+  }
+  else {
+    found.push([startIdx, endIdx]);
+    findAll(string.substring(endIdx, string.length));
+  }
+  }
  // or simply ...
  //new AulxUI.CM(idOfTextbox);
  // And that's it. Your editor now features JS autocompletion.
  console.log(props.doc)
+ console.log(found,"found")
+ // make descript and hover over types and where is it defined 
+ function makeDescript(val:object,Parent:string){
+  /*if(val == "" || Parent == ""){
+  return null                                                              
+  }else{
+  Parent = document.querySelector(`.${Parent}`)
+  Parent?.addEventListener("mouseover", function( event ) {
+  /*return (
+    <Popover />
+
+  )
+  /* alert("wow")
+   })
+   */
+   return (
+    <div style ={{position:"relative",top:props.top + 10, left:props.left +10 ,width:"80%",backgroundColor:"dark",color:"white",}}>
+      <p> hhh </p>
+    </div>
+)
+   
+
+}
  return (
   <div className="code-complete-modal" id="code-complete-modal" ref={EditorRef} style={{top:props.y_axis,left:props.x_axis,  }} 
   >
@@ -221,10 +308,82 @@ if(props.on == true){
       // var lasModifiedCode = props.code.split('\n') //split(/[\n\s;(:?.]+/)
        //var lastMCode = lasModifiedCode[props.lineChar.line]//.split(/[\s\t:.]/)
        //console.log(lastMCode)
-       if(val.includes(props.code.split(/[\n.]+/))){
+       /*
+       var lastMCode = props.code.split(/\n/)[props.lineChar.line]
+      // var lastSplitCode = lastMCode.split()
+       var valRegex = new RegExp(`^${val.name}`,'i')
+       /*if(lastMCode.match(/[\s\t]/) || lastMCode.match(/[.]/){
+        
+       }*/
+       /*
+       var currentCodeSearch = lastMCode.split(/[.:?"\s\t]/)
+       console.log(currentCodeSearch)
+       var Size = currentCodeSearch.join(',').length;
+       console.log(Size)
+       console.log(props.lineChar.ch)
+       var codeSearched = props.doc.current.getRange({line:props.lineChar.line,ch:props.lineChar.ch},{line:props.lineChar.line,ch:Size})
+       console.log(codeSearched)
+       var testCode ;
+       /*for(var i=0;i < lastMCode.length;i++){
+        if(props.lineChar.ch < lastMCode[i].length){
+	 testCode = lastMCode[i]
+
+
+	}
+
+       }*/
+      /* currentCodeSearch.forEach(element => {
+        if(props.lineChar.ch < element.length){
+	 testCode = element
+
+	}
+
+       })
+       */
+      /* console.log(testCode)
+       var value = []
+       /*val.push({
+        body:currentCodeSearch,
+	index:
+
+       }
+       */
+       
+       //findAll(lastMCode,val.name)
+       /*var lastMCode = fetchTextForSearch(props.code,props.lineChar.line,props.lineChar.ch)*/
+       /*
+	* split code into lines 
+	*/
+       var TokenizeCode = code
+       if(TokenizeCode != ""){
+        TokenizeCode = TokenizeCode.replace(/[""''``]+/g,"")
+	}
+       var linesOfCode = TokenizeCode.split(/\n/)
+       var currentLine = linesOfCode[props.lineChar.line]
+       /*if(currentLine !="" || currentLine != undefined || currentLine != null){
+       currentLine =  currentLine.replace(/[""'']+/g,"")
+       }*/
+       //s.match(/(?!^)".*?"/g)
+       var groupsOfCode = esprima.tokenize(currentLine?currentLine:"",{range:true,loc:true,comment:true})
+       var currentCode = []
+       groupsOfCode.filter((codeOfGroup)=> {
+       console.log(codeOfGroup)
+       if (codeOfGroup.range[1]== lineChar.ch){
+         console.log(codeOfGroup)
+         currentCode.push(codeOfGroup)
+
+       }
+       })
+       console.log(groupsOfCode)
+       //console.log(lastMCode,"lastMCode")
+       console.log(currentCode)
+       //console.log(currentCode[0].valu)
+       if(/*val.name.includes(currentCode[0]?.value) ||*/ val.name.startsWith(currentCode[0]?.value) || val.name.includes(currentCode[0]?.value)){
         //alert(props.code.split(/[\n\s;]+/))
 	return val
-       }}}).map((elem,index) => <li className="item-of-suggestion" key={index}> <button  className="button-suggestion" onClick={()=> alert(index)}> <p className="text-of-suggestion">{elem }</p> {/*<p> description </p>*/}</button>  <BsInfo style={{position:"relative"}}/></li>)}
+       
+
+       }}}).map((elem,index) => <li className="item-of-suggestion" > <button  className="button-suggestion" onClick={()=> alert(index) }> <p className="text-of-suggestion">{elem.name }</p> <p className="type-of-suggestion"> {elem.type} </p>{/*<p> description </p>*/}</button>  <BsInfo onClick={makeDescript(elem,"list-of-suggestion")} style={{position:"relative"}}/></li>)}
    </ul>
    {x_axis}
    ||

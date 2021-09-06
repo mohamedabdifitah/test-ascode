@@ -83,7 +83,7 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:any)=>
        }
        console.log(StringMethods)
        
-       var keywords =[
+      /* var keywords =[
 	       "await","break","case","catch","class",
 	       "const","continue","debugger","default",	"delete",
 	       "do","else","enum","export","extends",
@@ -96,6 +96,7 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:any)=>
 	       
        ]
        var suggestion = [keywords]
+       */
        /*for(key,value in ArrayMethods){
 	       keywords.push(key)
 
@@ -127,13 +128,17 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:any)=>
 	       if(line[i].match(/^const/i) || line[i].match(/^var/i) || line[i].match(/^let/i)){
 		       var variableSplitter = line[i].split(/=/)
 		       var declarationType = variableSplitter[0].split(" ")[0]
+		       var variableName = ""
 		       var variableName = variableSplitter[0].split(" ")[1]
 		       var {variableValue} = "undefined";
 		       if(variableSplitter[1]){
 			       variableValue = variableSplitter[1]
 
 		       }
-		       variableNames.push({declarationType,variableName,variableValue,})
+		       variableNames.push({name:variableName,short_name:variableName,body:variableName,regex:`/${variableName}/`,description:{
+			       declarationType,
+			       value:variableValue
+		        },type:"variable"})
 		       /*function getVarsNames(v = {}){
 			       // getting keys or names !
 			       let names = Object.keys(v);
@@ -164,8 +169,10 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:any)=>
 
        }
        */
+       
+       var suggestion = [jsSnippet[0].snippet,jsSnippet[1].keywords,/*variableNames[0]*/]
        //suggestion.append(keywords)
-       variableNames.forEach(elem => suggestion.push(elem.variableName))
+       //variableNames.forEach(elem => suggestion.push(elem.variableName))
        //alert(variableNames.length)
        //suggestion.push(variableNames[i].variableName)
        /*for(let i=0;i < variableNames.length;i++){
@@ -175,10 +182,24 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:any)=>
        */
        
        // console.log(doc.current)
+       //suggestion.push(variableNames)
+
+       console.log(variableNames)
+       for(let i=0;i < variableNames.length;i++){
+	       if(variableNames[i].name == undefined){
+
+	       }else{
+		       suggestion.push(variableNames[i])
+	       }
+       }
+       
+       suggestion = suggestion.flat()
+       console.log(suggestion)
        console.log(jsSnippet)
        //console.log(json.hello);
-        suggestion = suggestion.flat(Infinity)
+        /*suggestion = suggestion.flat(Infinity)
         console.log(suggestion,"javascript extension")
+	*/
 	return suggestion
 
 }

@@ -93,5 +93,10 @@ font-style:italic;
 .text-of-suggestion >p{
 position:relative;
 left:-10px;
-
+flex:1;
+}
+.type-of-suggestion{
+position:relative;
+left:10px;
+color:blue;
 }
