@@ -378,6 +378,8 @@ if(props.on == true){
        //console.log(lastMCode,"lastMCode")
        console.log(currentCode)
        //console.log(currentCode[0].valu)
+       //console.log(esprima.parse())
+
        if(/*val.name.includes(currentCode[0]?.value) ||*/ val.name.startsWith(currentCode[0]?.value) || val.name.includes(currentCode[0]?.value)){
         //alert(props.code.split(/[\n\s;]+/))
 	return val
