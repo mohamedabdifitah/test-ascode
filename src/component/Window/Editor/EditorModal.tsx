@@ -97,7 +97,8 @@ function ModalPosition(props:IModalPosition){
    set_y_axis,
    lineChar,
    } = props
-   var ModalSection = document?.getElementById('code-complete-modal');
+   //var ModalSection = document?.getElementById('code-complete-modal')
+   //var ModalSection = document?.querySelector(".AutoComplete__Modal")
    //console.log(ModalSection)
    //console.log(props,'Editor getValue')
    console.log(lineChar.ch,'EditorModal')
@@ -161,7 +162,6 @@ function ModalPosition(props:IModalPosition){
    //set_y_axis(lineChar.line+50)
    },[lineChar])
    
-
 }
 export default function EditorModal(props:Iprops){
  var data= LanguageFetcher(props.lang,props.code,props.onChange,props.doc)
@@ -170,7 +170,7 @@ export default function EditorModal(props:Iprops){
  //console.log(props.doc.current.getValue('\n'))
  console.log(data,"from EditorModal")
  console.log(data)
- const EditorRef = useRef<HTMLDivElement>(null)
+ //const EditorRef = useRef<HTMLDivElement>(null)
  const {
   on,
   x_axis,                                                                          set_x_axis,                                                                      y_axis,
@@ -191,6 +191,12 @@ export default function EditorModal(props:Iprops){
  setlineChar,
  }
  ModalPosition(ModalPositionProps)
+ React.useEffect(()=>{
+  const AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
+  AutoCompleteModal.style.top = String(y_axis) + "px"
+  AutoCompleteModal.style.left = String(x_axis)+"px";
+  alert(x_axis)
+ },[x_axis])
  var functions = {
   makeDescript,
 

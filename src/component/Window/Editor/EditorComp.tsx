@@ -15,6 +15,10 @@ import 'codemirror/mode/python/python'
 import 'codemirror/mode/jsx/jsx'
 import 'codemirror/mode/django/django';
 /*
+ * auto complete ts 
+ */
+//import "./AutoComplete";
+/*
  * scroll bars
  */
 import 'codemirror/addon/scroll/annotatescrollbar.js'
@@ -89,9 +93,15 @@ import 'codemirror/addon/comment/continuecomment.js';
  * merge/merge.js
  */
 import 'codemirror/addon/merge/merge.js';
-import EditorModal from './EditorModal';
+import EditorModal,{ModalPosition} from './EditorModal';
 import SimpleModal from './EditorModalComp';
 import LanguageFetcher from "../../../languages/index"
+/*
+ * AutoComplete
+ */
+import CreateAutoCompleteModal ,{FetchPosition} from "./AutoComplete"
+import "./AutoComplete.css";
+//import ModalPosition from "./EditorModal";
 /*
  * js external libary autocomplete
  */
@@ -193,6 +203,7 @@ export default function EditorComp(props:Props) {
   /*var splitCode = "";
   splitCode = (value.split(' '))
   */
+i
   React.useEffect(()=>{                                                            if(value=="") {                                                               
    setModalOpen(ModalOpen)
   /*}else if(value.match(/\w\s/g) || value.match(/\s/g)){
@@ -212,7 +223,20 @@ export default function EditorComp(props:Props) {
   // or simply ...
   //new AulxUI.CM(idOfTextbox);
   // And that's it. Your editor now features JS autocompletion.
+ // var {x_position ,y_position }  = ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)
+  useEffect(()=>{
 
+   ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)
+   },[x_axis])
+  useEffect(()=>{
+   //CreateAutoCompleteModal(x_axis,y_axis)
+   //var x_position = x_axis
+  // var y_position = y_axis
+  //var {x_position ,y_position }  = ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)
+   FetchPosition(x_axis,y_axis,lineChar)
+
+  },[value]);
+  
   return (
   <div className={className}>
    <ControlledEditor
@@ -285,10 +309,14 @@ export default function EditorComp(props:Props) {
         }}
 	
       />
+      {/*AutoComplete(x_axis,y_axis)*/}
       
-      <EditorModal on={ModalOpen} lineChar={lineChar} setlineChar={setlineChar}  x_axis={x_axis} set_x_axis={set_x_axis}  y_axis={y_axis} set_y_axis={set_y_axis} lang={language} code={value} onChange={onChange}  setModalOpen={setModalOpen} setterValue={setterValue} doc={doc} /*set_x_aixs={set_x_aixs} set_y_axis={set_y_axis}*/>
+      {/*<EditorModal on={ModalOpen} lineChar={lineChar} setlineChar={setlineChar}  x_axis={x_axis} set_x_axis={set_x_axis}  y_axis={y_axis} set_y_axis={set_y_axis} lang={language} code={value} onChange={onChange}  setModalOpen={setModalOpen} setterValue={setterValue} doc={doc} /*set_x_aixs={set_x_aixs} set_y_axis={set_y_axis}*//*>
        {value}
       </EditorModal>
+      */}
+
+
       {/*<SimpleModal />*/}
       <div className="code__section__mirror">
       <ControlledEditor 
