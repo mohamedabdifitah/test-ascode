@@ -2,7 +2,7 @@
 import javascriptSnippetMaker from "./javascript/javascript";
 import pythonSnippetMaker from './python/python';
 
-export default function LanguageFetcher(lang:string,code:string,onChange:any,doc:any){
+export default function LanguageFetcher(lang:string,code:string,onChange:any,doc:object){
 	/*LanguageTeller(lang)
 	 */
 	console.log(doc)
@@ -15,6 +15,8 @@ function LanguageSnippetMaker(lang:string,code:string,onChange:any,doc:object){
 			return javascriptSnippetMaker(lang,code,onChange,doc)
 		case "python":
 			return pythonSnippetMaker(lang,code,onChange)
+		default :
+			return javascriptSnippetMaker(lang,code,onChange,doc)
 	}
 
 }

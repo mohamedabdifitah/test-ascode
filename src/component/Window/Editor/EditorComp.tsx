@@ -93,13 +93,13 @@ import 'codemirror/addon/comment/continuecomment.js';
  * merge/merge.js
  */
 import 'codemirror/addon/merge/merge.js';
-import EditorModal,{ModalPosition} from './EditorModal';
+import EditorModal from './EditorModal';
 import SimpleModal from './EditorModalComp';
 import LanguageFetcher from "../../../languages/index"
 /*
  * AutoComplete
  */
-import CreateAutoCompleteModal ,{FetchPosition} from "./AutoComplete"
+import CreateAutoCompleteModal ,{FetchPosition,ModalPosition} from "./AutoComplete"
 import "./AutoComplete.css";
 //import ModalPosition from "./EditorModal";
 /*
@@ -203,14 +203,15 @@ export default function EditorComp(props:Props) {
   /*var splitCode = "";
   splitCode = (value.split(' '))
   */
-i
-  React.useEffect(()=>{                                                            if(value=="") {                                                               
+  React.useEffect(()=>{                                                            
+  if(value=="") {                                                               
    setModalOpen(ModalOpen)
   /*}else if(value.match(/\w\s/g) || value.match(/\s/g)){
    setModalOpen(false)
   */}else{
   setModalOpen(true)                                                        
-  }                                                                                },[value])
+  }                                                                              
+  },[value])
   
   //const[setterValue,setSetterValue] = useState("")
   console.log(doc,"hh")
@@ -224,18 +225,32 @@ i
   //new AulxUI.CM(idOfTextbox);
   // And that's it. Your editor now features JS autocompletion.
  // var {x_position ,y_position }  = ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)
-  useEffect(()=>{
+  /*useEffect(()=>{
 
    ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)
-   },[x_axis])
+   },[])
+   */
   useEffect(()=>{
    //CreateAutoCompleteModal(x_axis,y_axis)
    //var x_position = x_axis
   // var y_position = y_axis
   //var {x_position ,y_position }  = ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)
-   FetchPosition(x_axis,y_axis,lineChar)
+   const AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
+   if(AutoCompleteModal){
+    ModalPosition(lineChar)
+    }
+    FetchPosition(x_axis,y_axis,lineChar);
+    var data = LanguageFetcher(language,value,onChange,doc)
+     
 
-  },[value]);
+  },[value,lineChar]);
+  useEffect(()=>{
+   //var data = LanguageFetcher(language,value,onChange,doc)
+
+
+  },[doc,value,lineChar])
+ // alert(typeof(doc))
+ // var data = LanguageFetcher(language,value,onChange,doc)
   
   return (
   <div className={className}>
@@ -316,8 +331,8 @@ i
       </EditorModal>
       */}
 
-
       {/*<SimpleModal />*/}
+      {/*ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)*/}
       <div className="code__section__mirror">
       <ControlledEditor 
        onBeforeChange={(editor,data,value)=>{

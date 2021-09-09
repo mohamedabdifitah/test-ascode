@@ -37,33 +37,46 @@ function updateModalPosition(x_axis:number,y_axis:number,lineChar:{line:number,c
 */
 
 }
-/*
+
 export function ModalPosition(lineChar:{line:number,ch:number,sticky:null}){
-	const x_position = document.querySelector(".AutoComplete__Modal").style.top ;
-	const y_position = document.querySelector(".AutoComplete__Modal").style.left;
-	/*if(lineChar.line==0){
-		x_position = "30px"
+	var position = document.querySelector(".AutoComplete__Modal")
+	//var y_position = document.querySelector(".AutoComplete__Modal")
+	if(lineChar.line == 0){
+		position.style.top = "30px"
 		if(lineChar.ch ==0){
-			x_position = "30px";
-		}else if(lineChar.ch==1){
-			x_position = "45px";
+			position.style.left = "45px"
+
+		}else if(lineChar.ch == 1){
+			position.style.left = "60px";
+
 
 		}else{
-			x_position*8+30
+			var purePosition = position.style.left
+			purePosition = purePosition.replace(/px/,"")
+			//alert(purePosition)
+			purePosition = parseInt(purePosition)
+			position.style.left = String(lineChar.ch*8+45)+"px";
 
 		}
+
+
 	}else if(lineChar.line!=0 && lineChar.line!=1){
-		x_position*15+30
+		position.style.top = String(lineChar.line*15+30)+"px"
 		if(lineChar.ch==0){
-			x_position = "30px"
-		}else if(){
-
-		}else if(){
-
-		}i
-
+			position.style.left= "45px";
+		}else if(lineChar.ch==1){
+			position.style.left = "60px"
+		}else if(lineChar.ch!=0 && lineChar.ch!=1){
+			position.style.left = String(lineChar.ch*8+45) + "px"
+		}
+	}else if(lineChar.line==1){
+		position.style.top = "45px"
+		if(lineChar.ch==0){
+			position.style.left = "45px"
+		}else if(lineChar.ch==1){                                                         position.style.left = "60px"
+		}else if(lineChar.ch!=0 && lineChar.ch!=1){
+			position.style.left = String(lineChar.ch*8+45)+"px"
+		}
 	}
-	*/
-/*
 }
-*/
+

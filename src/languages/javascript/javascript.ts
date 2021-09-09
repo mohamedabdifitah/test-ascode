@@ -1,6 +1,8 @@
 import * as jsSnippet from "./snippet/snippet.json";
 import * as acorn from "acorn";
-import * as espirma from "espirma";
+//import * as espirma from "espirma";
+import * as esprima from 'esprima';
+import EditorComp from "../../component/Window/Editor/EditorComp.tsx"
 //const { default: json } = await import("./test.json", { assert: { type: "json" } });
 //console.log(json.hello);
 function getVarsNames(v = {}){
@@ -9,7 +11,7 @@ function getVarsNames(v = {}){
     // return array contain all names of variables
     return names;
 }
-const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:any)=>{
+const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:object)=>{
 	/*var keywords=[
 		"await","break","case","catch","class","const","continue","debugger","default","delete","do","else","enum","export","extends","false","finally","for","function","if","implements","import","in","instanceof","interface" ,"let","new","null" "package","private","protected","public","return","super","switch","static","this","throw","try","true","typeof","var""void","while","with","yield",
 	]
@@ -345,8 +347,65 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:any)=>
         /*suggestion = suggestion.flat(Infinity)
         console.log(suggestion,"javascript extension")
 	*/
+       // var AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
+       suggestion.map((elem,index)=>{
+		const AutoCompleteModal = document.querySelector(".List__of__suggestion");
+		if(AutoCompleteModal == null){
+
+		}else{
+			const EachSuggestion = document.createElement("li")
+			EachSuggestion.className = "Each__suggestion";
+			const ContainerOfSugg = document.createElement("div")
+			const TextOfSugg = document.createElement("p")
+			ContainerOfSugg.className = "suggestion__container"
+			TextOfSugg.className = "suggestion__name"
+			TextOfSugg.innerHTML = `${elem.name}`;
+			const img = document.createElement('img');
+			img.className = "suggestion__image"
+			img.src ='https://media.geeksforgeeks.org/wp-content/uploads/20190529122828/bs21.png';
+			const Suggetype = document.createElement("p")
+			Suggetype.className = "suggestion__type";
+			Suggetype.innerHTML = `${elem.type}`
+			ContainerOfSugg.appendChild(img)
+			ContainerOfSugg.appendChild(TextOfSugg)
+			ContainerOfSugg.appendChild(Suggetype)
+			//const div = document.createElement("div")
+			//const div1 = document.createElement("div")
+			//const div2 = document.createElement("div")
+			//ContainerOfSugg.appendChild(div)
+			//ContainerOfSugg.appendChild(div1)
+			//ContainerOfSugg.appendChild(div2)
+			EachSuggestion.appendChild(ContainerOfSugg)
+			AutoCompleteModal.appendChild(EachSuggestion)
+		}
+
+	})
+	//var currentCode = JsTokenize(code,doc.current.getCursor())
+	console.log(doc,"js extension")
+	//console.log(currentCode)
 	return suggestion
 
 }
+const JsTokenize = (code:string,lineChar:{line:number,ch:number,sticky:null})=>{
+	var TokenizeCode = code
+	if(TokenizeCode != ""){
+		TokenizeCode = TokenizeCode.replace(/[""''``]+/g,"");
+        };
+	var linesOfCode = TokenizeCode.split(/\n/);                                      var currentLine = linesOfCode[lineChar.line]
+       /*if(currentLine !="" || currentLine != undefined || currentLine != null){       currentLine =  currentLine.replace(/[""'']+/g,"")                                }*/
+       //s.match(/(?!^)".*?"/g)
+       var groupsOfCode = espirma.tokenize(currentLine?currentLine:"",{range:true,loc:true,comment:true});
+       var currentCode = [];
+       groupsOfCode.filter((codeOfGroup)=> {
+       //console.log(codeOfGroup)
+       if (codeOfGroup.range[1]== lineChar.ch){
+         console.log(codeOfGroup);
+         currentCode.push(codeOfGroup);
+       }
+       })
+       return currentCode;
 
-export default javascriptSnippetMakert
+
+}
+export default javascriptSnippetMakert;
+
