@@ -171,7 +171,7 @@ function Editor(props:Iprops) {
   const EditorRef  = useRef <HTMLDivElement>(null)
   const[EditorState,setEditorState] = useState("")
   const[EditorState1,setEditorState1] = useState("")
-  const [lang,setLang] = useState("javascript")
+  const [lang,setLang] = useState("markdown")
   /*
    * making snippet syntax checking
    */
