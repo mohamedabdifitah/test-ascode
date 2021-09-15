@@ -236,16 +236,13 @@ export default function EditorComp(props:Props) {
   // var y_position = y_axis
   //var {x_position ,y_position }  = ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)
    const AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
-   if(AutoCompleteModal){
-    ModalPosition(lineChar)
-    }
-    FetchPosition(x_axis,y_axis,lineChar);
-    var data = LanguageFetcher(language,value,onChange,doc)
+   FetchPosition(x_axis,y_axis,lineChar);
+    //var data = LanguageFetcher(language,value,onChange,doc)
      
 
   },[value,lineChar]);
   useEffect(()=>{
-   //var data = LanguageFetcher(language,value,onChange,doc)
+   var data = LanguageFetcher(language,value,onChange,doc)
 
 
   },[doc,value,lineChar])

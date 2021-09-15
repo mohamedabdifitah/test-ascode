@@ -18,7 +18,7 @@
 				"type":"snippet"
 			},
 			{
-				"name":"arrow-function",
+				"name":"function",
 				"short_name":"anonymous",
 				"body":"const hello(pr1,pr2)=> { \n\t return pr1*pr2\n}",
 				"regex":"/function:arrow-function!",

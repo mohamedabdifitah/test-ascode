@@ -348,38 +348,46 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:object
         console.log(suggestion,"javascript extension")
 	*/
        // var AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
-       suggestion.map((elem,index)=>{
-		const AutoCompleteModal = document.querySelector(".List__of__suggestion");
-		if(AutoCompleteModal == null){
-
-		}else{
-			const EachSuggestion = document.createElement("li")
-			EachSuggestion.className = "Each__suggestion";
-			const ContainerOfSugg = document.createElement("div")
-			const TextOfSugg = document.createElement("p")
-			ContainerOfSugg.className = "suggestion__container"
-			TextOfSugg.className = "suggestion__name"
-			TextOfSugg.innerHTML = `${elem.name}`;
-			const img = document.createElement('img');
-			img.className = "suggestion__image"
-			img.src ='https://media.geeksforgeeks.org/wp-content/uploads/20190529122828/bs21.png';
-			const Suggetype = document.createElement("p")
-			Suggetype.className = "suggestion__type";
-			Suggetype.innerHTML = `${elem.type}`
-			ContainerOfSugg.appendChild(img)
-			ContainerOfSugg.appendChild(TextOfSugg)
-			ContainerOfSugg.appendChild(Suggetype)
+       let Modal = document.querySelector(".AutoComplete__Modal")
+       if(Modal instanceof HTMLDivElement){
+	       suggestion.map((elem,index)=>{
+		       //const ListOfAutoComplete = document.querySelector(".List__of__suggestion");
+		       const AutoCompleteModal = document.querySelector(".AutoComplete__Modal");
+		       const EachSuggestion = document.createElement("li");
+		       EachSuggestion.className = "Each__suggestion";
+		       const ContainerOfSugg = document.createElement("div");
+		       const TextOfSugg = document.createElement("p");
+		       ContainerOfSugg.className = index==1?"suggestion__container selected":"suggestion__container";
+		       TextOfSugg.className = "suggestion__name";
+		       TextOfSugg.innerHTML = elem.type == "snippet"?`${elem.short_name}`:`${elem.name}`;
+		       const img = document.createElement('img');
+		       img.className = "suggestion__image";
+		       img.src ='https://media.geeksforgeeks.org/wp-content/uploads/20190529122828/bs21.png';
+		       const Suggetype = document.createElement("p");
+		       Suggetype.className = "suggestion__type";
+		       Suggetype.innerHTML = `${elem.type}`;
+		       /*
+			* short description of Suggest
+			*/
+		       const suggShortDescript = document.createElement("p")
+		       suggShortDescript.className = "suggestion__short__descript"
+		       suggShortDescript.innerHTML = `${elem.description}`;
+		       ContainerOfSugg.appendChild(img);
+		       ContainerOfSugg.appendChild(TextOfSugg);
+		       //ContainerOfSugg.appendChild(Suggetype);
+		       ContainerOfSugg.appendChild(suggShortDescript)
 			//const div = document.createElement("div")
 			//const div1 = document.createElement("div")
 			//const div2 = document.createElement("div")
 			//ContainerOfSugg.appendChild(div)
 			//ContainerOfSugg.appendChild(div1)
 			//ContainerOfSugg.appendChild(div2)
-			EachSuggestion.appendChild(ContainerOfSugg)
-			AutoCompleteModal.appendChild(EachSuggestion)
-		}
-
-	})
+		      // EachSuggestion.appendChild(ContainerOfSugg);
+		       AutoCompleteModal.appendChild(ContainerOfSugg);
+		       //ListOfAutoComplete.appendChild(EachSuggestion)
+		       //AutoCompleteModal.innerHTML = `hhh`;
+		})
+       }
 	//var currentCode = JsTokenize(code,doc.current.getCursor())
 	console.log(doc,"js extension")
 	//console.log(currentCode)

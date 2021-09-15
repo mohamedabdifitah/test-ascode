@@ -2,29 +2,36 @@ import {IModalPosition} from "./EditorModal"
 export default function CreateAutoCompleteModal(x_axis:number,y_axis:number){
 	const AutoCompleteModal = document.createElement("div");
 	AutoCompleteModal.className= "AutoComplete__Modal"
+	//AutoCompleteModal.setAtributte("id","AutoComplete__Modal")
+	AutoCompleteModal.id = "AutoComplete__Modal";
 	AutoCompleteModal.style.top = `${y_axis} px`
 	AutoCompleteModal.style.left = "50"
-	const ListOfSuggestion = document.createElement("ul");
+	//const ListOfSuggestion = document.createElement("ul");
 	alert("hi")
-	ListOfSuggestion.className = "List__of__suggestion"
-	AutoCompleteModal.appendChild(ListOfSuggestion)
+	//ListOfSuggestion.className = "List__of__suggestion"
+	//AutoCompleteModal
 	   //const codemirror = document.querySelector(".react-codemirror2")
 	const codemirror = document.querySelector(".CodeMirror-scroll")
 	   //const codemirror = document.querySelector(".CodeMirror")
 	codemirror.appendChild(AutoCompleteModal)
 	console.log(codemirror)
-	
+	alert(codemirror)
 }
 export function FetchPosition(x_axis:number,y_axis,lineChar:{line:number,ch:number,sticky:null}){
-	if(document.querySelector(".AutoComplete__Modal") == null){
+	const AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
+	const codemirror = document.querySelector(".CodeMirror-scroll")
+	if(AutoCompleteModal == null){
 		CreateAutoCompleteModal(x_axis,y_axis)
-	}else{
+	}else if(AutoCompleteModal instanceof HTMLDivElement ){
 		//CreateAutoCompleteModal(x_axis,y_axis)
-		updateModalPosition(x_axis,y_axis,lineChar)
+		//updateModalPosition(x_axis,y_axis,lineChar)
+		console.log(codemirror)
+		ModalPosition(lineChar)
 		
 	}
 
 }
+/*
 function updateModalPosition(x_axis:number,y_axis:number,lineChar:{line:number,ch:number,sticky:null}){
 	const AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
 	//alert(AutoCompleteModal.style.top)
@@ -35,9 +42,10 @@ function updateModalPosition(x_axis:number,y_axis:number,lineChar:{line:number,c
 	AutoCompleteModal.style.top = y_axis
 	AutoCompleteModal.style.left = x_axis
 */
+/*
 
 }
-
+*/
 export function ModalPosition(lineChar:{line:number,ch:number,sticky:null}){
 	var position = document.querySelector(".AutoComplete__Modal")
 	//var y_position = document.querySelector(".AutoComplete__Modal")
