@@ -12,15 +12,25 @@ import Editor from "./Editor/Editor";
 import EditorSetting from "./Editor/EditorSetting";
 import React ,{useState,useRef,useEffect} from "react";
 import ConstructWindows from "./ConstructWindows"
+/*
+ *  all EditorState
+ */
+import EditorStates from "./EditorStates"
+//
+import Preview from "./Editor/markdown/preview"
+
 function Windows() {
   /*
   const EditorLayoutCounter = Editor()
   
   console.log(EditorLayoutCounter)
   */
+  const {EditorScreens,setEditorScreens,lang,EditorState,ShowPreviewMd,setShowPreviewMd} = EditorStates()
+  /*
   const[height,setheight] = useState("100%")
   const [width,setwidth] = useState("100%")
   /*const EditorScreens = useRef(1)*/
+  /*
   const [EditorScreens,setEditorScreens] = useState(1) 
   /*
   function constructEditors(Editors:number){
@@ -63,9 +73,17 @@ function Windows() {
 
   }
   */}
+ useEffect(()=>{
+   if(lang === "markdown"){                                           setEditorScreens(EditorScreens +1);                               setShowPreviewMd(true);                                         }else{                                                              setShowPreviewMd(false);                                          };                                                              },[EditorState])
+   
   return (                                                       
   <div className="Windows" >
-   *<ConstructWindows EditorScreens={EditorScreens} setEditorScreens={setEditorScreens}/>
+    <ConstructWindows EditorScreens={EditorScreens} setEditorScreens={setEditorScreens} type={"Editor"}/>
+    {/*<ConstructWindows EditorScreens={EditorScreens} setEditorScree
+ns={setEditorScreens} type={"Markdown-preview"}/>*/}
+
+    {ShowPreviewMd == true?<Preview doc={EditorState} />:""}
+
 	</div>
      
   )

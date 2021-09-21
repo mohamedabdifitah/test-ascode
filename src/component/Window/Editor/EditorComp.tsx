@@ -218,6 +218,18 @@ import 'codemirror/addon/comment/continuecomment.js';
  * merge/merge.js
  */
 import 'codemirror/addon/merge/merge.js';
+/*
+ * fold
+ */
+import "codemirror/addon/fold/brace-fold.js"; 
+import "codemirror/addon/fold/foldcode.js";    
+import "codemirror/addon/fold/foldgutter.js";  
+import "codemirror/addon/fold/markdown-fold.js";
+import "codemirror/addon/fold/comment-fold.js";
+import "codemirror/addon/fold/foldgutter.css"; 
+import "codemirror/addon/fold/indent-fold.js";  
+import "codemirror/addon/fold/xml-fold.js";
+
 import EditorModal from './EditorModal';
 import SimpleModal from './EditorModalComp';
 import LanguageFetcher from "../../../languages/index"
@@ -234,12 +246,19 @@ import "./AutoComplete.css";
 import* as Aulx from 'aulx';
 import AulxUI from 'aulx/aulx-ui.js';
 import { Controlled as ControlledEditor } from 'react-codemirror2'
+//import MarkdownPreview from "../../../languages/mark-down/Markdown-Preview";
+//import Preview from "./markdown/preview";
+//import EditorStates from "../EditorStates"; 
 interface Props {
 language:string;
 displayName:string;
 value:string;
 onChange:any;
-className:string
+className:string,
+/*
+ShowPreviewMd:boolean;
+setShowPreviewMd:React.Dispatch<React.SetStateAction<boolean>>,
+*/
 }
 
 export default function EditorComp(props:Props) {
@@ -248,9 +267,48 @@ export default function EditorComp(props:Props) {
     displayName,
     value,
     onChange,
-    className
+    className,
   } = props
+  /*const {
+  ShowPreviewMd,
+  setShowPreviewMd,
+  EditorScreens,
+  setEditorScreens,
+  }= EditorStates()
+  */
   const [lineChar,setlineChar] = useState({line:0,ch:0,sticky:null})
+  /*
+   * swapLine
+
+  function SwapLineDown(cm) {
+    if(cm.isReadOnly == undefined){
+    }else{
+    if (cm.isReadOnly()) return CodeMirror.Pass
+    
+    var ranges = cm.listSelections(), linesToMove = [], at = cm.lastLine() + 1;
+    for (var i = ranges.length - 1; i >= 0; i--) {
+      var range = ranges[i], from = range.to().line + 1, to = range.from().line;
+      if (range.to().ch == 0 && !range.empty()) from--;
+      if (from < at) linesToMove.push(from, to);
+      else if (linesToMove.length) linesToMove[linesToMove.length - 1] = to;
+      at = to;
+    }
+    cm.operation(function() {
+      alert("wow")
+      for (var i = linesToMove.length - 2; i >= 0; i -= 2) {
+        var from = linesToMove[i], to = linesToMove[i + 1];
+        var line = cm.getLine(from);
+        if (from == cm.lastLine())
+          cm.replaceRange("", CodeMirror.Pos(from - 1), CodeMirror.Pos(from), "+swapLine");
+        else
+          cm.replaceRange("", CodeMirror.Pos(from, 0), CodeMirror.Pos(from + 1, 0), "+swapLine");
+        cm.replaceRange(line + "\n", CodeMirror.Pos(to, 0), null, "+swapLine");
+      }
+      cm.scrollIntoView();
+    });
+    }
+  };
+  */
   const [open, setOpen] = useState(true)
   const [cursorPosition,setCursorPosition] = useState()
   /*
@@ -362,7 +420,7 @@ export default function EditorComp(props:Props) {
   // var y_position = y_axis
   //var {x_position ,y_position }  = ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)
    const AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
-   FetchPosition(x_axis,y_axis,lineChar);
+   //FetchPosition(x_axis,y_axis,lineChar);
     //var data = LanguageFetcher(language,value,onChange,doc)
      
 
@@ -374,7 +432,26 @@ export default function EditorComp(props:Props) {
   },[doc,value,lineChar])
  // alert(typeof(doc))
  // var data = LanguageFetcher(language,value,onChange,doc)
-  
+  /*useEffect(()=>{
+   MarkdownPreview(language)
+
+  },[])
+  */
+  useEffect(()=>{
+   if(value !=""){
+   console.warn(editorRef.current.isReadOnly())
+   }
+
+  },[value])
+  /*useEffect(()=>{
+   if(language === "markdown"){
+    setEditorScreens(EditorScreens +1)
+    setShowPreviewMd(true)
+    }else{
+     setShowPreviewMd(false)
+     }
+  },[])
+  */
   return (
   <div className={className}>
    <ControlledEditor
@@ -419,7 +496,8 @@ export default function EditorComp(props:Props) {
 	  /*
 	   *  above is my later options 
 	   */
-
+	  scanUp:true,
+	  foldGutter:true,
           lint: true,
           mode:language,
 	  //typescript:true,
@@ -436,12 +514,12 @@ export default function EditorComp(props:Props) {
 
 	  extraKeys:{
 	   'Ctrl-Space':'autocomplete',
-	   /*'Ctrl-/': codeMirror.toggleLineComment({
-	   indent: true,
-	   padding: " "
-	   }),
-	   */
-	   /*'Ctrl-up':editorRef.current.execCommand('swapLineDown')*/
+	   /*'Ctrl-/': editorRef.current.toggleLineComment({
+	    indent: true,
+	    padding: " "
+	   }),*/
+	   'Ctrl-/':"toggleComment",
+	   /*"Ctrl-;":SwapLineDown(editorRef.current)*/
 	   }
 	  
         }}

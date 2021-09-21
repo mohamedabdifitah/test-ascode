@@ -183,3 +183,24 @@ text-decoration:none !important;
 
 
 }
+.Markdown-preview-button {
+position:relative;
+top:-20px;
+left:20rem;
+background-color:inherit;
+border:none;
+color:white;
+opacity:0.5;
+
+}
+.markdown__previewer{
+position:fixed;
+width:345px;
+height:72.5rem;
+background-color:black;
+border:1px white solid;
+z-index:20;
+top:65px;
+left:640px;
+
+}

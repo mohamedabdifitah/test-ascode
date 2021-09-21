@@ -5,6 +5,8 @@ import Editor from "./Editor";
 import {BiGitPullRequest} from "react-icons/bi";
 import React,{useRef,useState,useEffect} from "react";
 import EditorSplitter from "./EditorSplitter"
+import RunCode from "./RunCode";
+import EditorStates from "../EditorStates";
 interface Iprops {
 EditorScreens: number,
 setEditorScreens:React.Dispatch<React.SetStateAction<number>>
@@ -23,6 +25,7 @@ function EditorSetting(props:Iprops){
    setFileOptionWidth("50%")
    }
   },[props.EditorScreens])
+  const {lang,code} = EditorStates()
  return(
     <div className="file__layout__setting" style={{width:FileOptionWidth}}>
       <IconButton onClick={()=> windowScreenSizer()} style={{color:"white",position:"relative",left:"1.5rem"}}>
@@ -31,8 +34,8 @@ function EditorSetting(props:Iprops){
       <IconButton style={{position:"relative",left:"1rem", fontSize:"30px", color:"white"}}>
        <BiGitPullRequest style={{fontSize:"30px",color:"white"}} />
       </IconButton>
-      <IconButton  style={{position:"relative",left:"0.5rem",fontSize:"30px",color:"white"}}>
-     <IoPlayOutline style={{fontSize:"30px",color:"white"}} />
+      <IconButton onClick={()=>RunCode(lang,code,props.EditorScreens,props.setEditorScreens)}style={{position:"relative",left:"0.5rem",fontSize:"30px",color:"white"}} /*onClick={Runcode(lang,code)}*/>
+     <IoPlayOutline  style={{fontSize:"30px",color:"white"}} />
      </IconButton>
      
     </div>

@@ -14,6 +14,8 @@ import "../WindowsSplitter.js"
 import EditorSplitter from "./EditorSplitter"
 import EditorModal from './EditorModal';
 import LanguageFetcher from "../../../languages/index"
+import EditorStates from "../EditorStates";
+import Preview from "./markdown/preview"
 interface Iprops {
 height:string,
 setheight:React.Dispatch<React.SetStateAction<string>>,
@@ -22,6 +24,14 @@ setwidth:React.Dispatch<React.SetStateAction<string>>,
 EditorScreens:number;
 }
 function Editor(props:Iprops) {
+ const {
+ height,
+ setheight,
+ width,
+ setwidth,
+ EditorScreens,
+ 
+ } = props
  var code = "HELLO WORLD "
  function TextInputHandler(e:React.FormEvent<HTMLOListElement>) {
   const lines = [e.target]
@@ -167,11 +177,11 @@ function Editor(props:Iprops) {
     return () => clearTimeout(timeout)
   }, [html, css, js])
   */
-  
-  const EditorRef  = useRef <HTMLDivElement>(null)
-  const[EditorState,setEditorState] = useState("")
-  const[EditorState1,setEditorState1] = useState("")
-  const [lang,setLang] = useState("markdown")
+  const {EditorRef,lang,EditorState,setEditorState,ShowPreviewMd,setShowPreviewMd,setEditorScreens} = EditorStates()
+  //const EditorRef  = useRef <HTMLDivElement>(null)
+  //const[EditorState,setEditorState] = useState("")
+  //const[EditorState1,setEditorState1] = useState("")
+  //const [lang,setLang] = useState("markdown")
   /*
    * making snippet syntax checking
    */
@@ -187,6 +197,12 @@ function Editor(props:Iprops) {
 
   },[EditorState])
   */
+  /*useEffect(()=>{                                                    if(lang === "markdown"){                                      
+    setEditorScreens(EditorScreens +1);
+    setShowPreviewMd(true);                                         }else{
+    setShowPreviewMd(false);
+    };                                                              },[])
+    */
   return (
    <div className="Editor__section" /*style={{display:props.EditorScreens? "flex":"grid" }}*/ ref={EditorRef}>
    {/*
@@ -253,6 +269,7 @@ function Editor(props:Iprops) {
    className={"editor__comp"}   
    />
    {/*<EditorModal/>*/}
+   {/*ShowPreviewMd == true?<Preview doc={EditorState} />:""*/}
    </div>
   </div>
 

@@ -123,4 +123,10 @@ height:100%;
 border:1px solid black;
 z-index:10;
 }
+.Windows__editor.Markdown-preview{
+left:16px;
+/*
+background-color:#333;
+*/
 
+}
