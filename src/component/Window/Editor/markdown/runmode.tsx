@@ -1,9 +1,8 @@
 
-/*//import { highlightTree } from '@codemirror/highlight'
-import {highlightTree} from "codemirror/meta
-//import { languages } from '@codemirror/language-data'
-import {languages} from "codemirror/runmode/colorize.js";
-import { oneDarkHighlightStyle } from 'codemirror/theme/theme-one-dark'
+import { highlightTree } from '@codemirror/highlight'
+//import {highlightTree} from "codemirror/meta
+import { languages } from '@codemirror/language-data'
+import { oneDarkHighlightStyle } from "@codemirror/theme-one-dark"
 import type { Language, LanguageDescription } from '@codemirror/language'
 
 type RunModeCallback = (
@@ -57,4 +56,4 @@ export async function getLanguage(langName: string): Promise<Language | null> {
 
 export default runmode
 
-*/
+

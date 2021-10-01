@@ -4,7 +4,7 @@ function EditorStates(props) {
   const EditorRef  = useRef <HTMLDivElement>(null);
   const[EditorState,setEditorState] = useState("");
   //const[EditorState1,setEditorState1] = useState("")
-  const [lang,setLang] = useState("markdown");
+  const [lang,setLang] = useState("javascript");
   const [EditorScreens,setEditorScreens] = useState(1);
   const[height,setheight] = useState("100%");
   const [width,setwidth] = useState("100%");
@@ -22,7 +22,7 @@ function EditorStates(props) {
    width,
    setwidth,
    ShowPreviewMd,
-   setShowPreviewMd
+   setShowPreviewMd,
   }
 }
 

@@ -1,17 +1,17 @@
 import "./Terminal.css"
-import React,{useState,useRef} from "react";
+import React,{useState,useRef,useEffect} from "react";
 // Import XTerm
 /*
 import { XTerm } from 'xterm-for-react'
 */
 
-//import "xterm/css/xterm.css";
+import "xterm/css/xterm.css";
 
-//import {Terminal as XXterm} from "xterm/lib/xterm.js"
-import "terminal-js/dist/terminal.min.js"
+import "xterm/lib/xterm.js"
+//import "terminal-js/dist/terminal.min.js"
 
 /*import { Terminal as xTerminal} from 'xterm';*/
-//import TerminalEmulator from "./TerminalEmulator"
+import CreateTerminal from "./TerminaEmulator";
 function Terminal() { 
  const TerminalContainer = useRef(null)
  /*const termRef = useRef React.MutableRefObject<HTMLElement>(null)*/
@@ -59,12 +59,16 @@ function Terminal() {
   speed: 15 // chars per second
   },[]);
   */
- 
+  useEffect(()=>{
+   CreateTerminal()
+
+  },[])
  
  return (
-       <div ref ={TerminalSelector}className="Terminal" id="terminal" ref={termRef} >
+       <div ref ={TerminalSelector} className="Terminal" id="terminal" ref={termRef} >
        </div>
 
   )
 }                       
 export default Terminal
+

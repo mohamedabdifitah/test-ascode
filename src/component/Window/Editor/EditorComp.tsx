@@ -247,7 +247,8 @@ import* as Aulx from 'aulx';
 import AulxUI from 'aulx/aulx-ui.js';
 import { Controlled as ControlledEditor } from 'react-codemirror2'
 //import MarkdownPreview from "../../../languages/mark-down/Markdown-Preview";
-//import Preview from "./markdown/preview";
+import Preview from "./markdown/preview";
+import DescriptFetcher from "./DescriptModal";
 //import EditorStates from "../EditorStates"; 
 interface Props {
 language:string;
@@ -366,9 +367,13 @@ export default function EditorComp(props:Props) {
 
    },[])
    */
-  useEffect(()=>{
+   /*
+    * no need useEffect
+    */
+  /*useEffect(()=>{
   LanguageFetcher(language,value,onChange)
   },[value])
+  */
   /*
   useEffect(()=>{
    /*console.log(codeSection?.getSelection())*/
@@ -420,16 +425,17 @@ export default function EditorComp(props:Props) {
   // var y_position = y_axis
   //var {x_position ,y_position }  = ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)
    const AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
-   //FetchPosition(x_axis,y_axis,lineChar);
+   FetchPosition(x_axis,y_axis,lineChar,language,value,doc);
     //var data = LanguageFetcher(language,value,onChange,doc)
      
 
-  },[value,lineChar]);
-  useEffect(()=>{
+  },[value,lineChar,doc]);
+  /*useEffect(()=>{
    var data = LanguageFetcher(language,value,onChange,doc)
 
 
   },[doc,value,lineChar])
+  */
  // alert(typeof(doc))
  // var data = LanguageFetcher(language,value,onChange,doc)
   /*useEffect(()=>{
@@ -452,6 +458,31 @@ export default function EditorComp(props:Props) {
      }
   },[])
   */
+  /* 
+   * test for a refference of variable 
+   */
+  useEffect(()=>{
+   var Element = document.querySelector(".cm-m-javascript.cm-variable")
+   var variableReferences=[
+    `ReferenceError: x is not defined`,
+    `ReferenceError: assignment to undeclared variable "x"`,
+    `ReferenceError: can't access lexical declaration\`X' before initialization`,
+    `ReferenceError: deprecated caller or arguments usage`,
+    `ReferenceError: invalid assignment left-hand side`,
+    `ReferenceError: reference to undefined property "x"`,
+
+
+   ]
+   if(Element instanceof HTMLSpanElement){ 
+     Element.addEventListener("click",(e)=>{
+     alert(variableReferences[0])
+     DescriptFetcher()
+    })
+
+   }
+
+
+  },[value])
   return (
   <div className={className}>
    <ControlledEditor
@@ -531,7 +562,7 @@ export default function EditorComp(props:Props) {
        {value}
       </EditorModal>
       */}
-
+      <Preview doc={value} />
       {/*<SimpleModal />*/}
       {/*ModalPosition(x_axis,set_x_axis,y_axis,set_y_axis,lineChar,setlineChar)*/}
       <div className="code__section__mirror">

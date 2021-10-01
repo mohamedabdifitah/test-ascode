@@ -130,3 +130,8 @@ background-color:#333;
 */
 
 }
+
+.cm-m-javascript.cm-variable{
+text-decoration: red wavy underline !important;
+
+}

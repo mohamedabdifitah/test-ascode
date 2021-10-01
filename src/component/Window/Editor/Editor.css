@@ -204,3 +204,17 @@ top:65px;
 left:640px;
 
 }
+.Description__Modal{
+position:fixed;
+z-index:20;
+background-color:black;
+color:white;
+width:300px;
+height:200px;
+left:50px;
+top:50px;
+}
+.cm-m-css.cm-property.cm-error{
+background-color:inherit;
+text-decoration:red wavy underline;
+}

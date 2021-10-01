@@ -1,5 +1,7 @@
-import {IModalPosition} from "./EditorModal"
-export default function CreateAutoCompleteModal(x_axis:number,y_axis:number){
+import {IModalPosition} from "./EditorModal";
+import LanguageFetcher from "../../../languages/index"
+import EditorStates from "../EditorStates";
+export default function CreateAutoCompleteModal(x_axis:number,y_axis:number,lang:string,code:string,doc:any){
 	const AutoCompleteModal = document.createElement("div");
 	AutoCompleteModal.className= "AutoComplete__Modal"
 	//AutoCompleteModal.setAtributte("id","AutoComplete__Modal")
@@ -14,20 +16,22 @@ export default function CreateAutoCompleteModal(x_axis:number,y_axis:number){
 	const codemirror = document.querySelector(".CodeMirror-scroll")
 	   //const codemirror = document.querySelector(".CodeMirror")
 	codemirror.appendChild(AutoCompleteModal)
+	var data = LanguageFetcher(lang,code,doc)
 	console.log(codemirror)
 	alert(codemirror)
 }
-export function FetchPosition(x_axis:number,y_axis,lineChar:{line:number,ch:number,sticky:null}){
+export function FetchPosition(x_axis:number,y_axis,lineChar:{line:number,ch:number,sticky:null},lang,code,doc){
 	const AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
 	const codemirror = document.querySelector(".CodeMirror-scroll")
 	if(AutoCompleteModal == null){
-		CreateAutoCompleteModal(x_axis,y_axis)
+		CreateAutoCompleteModal(x_axis,y_axis,lang,code,doc)
 	}else if(AutoCompleteModal instanceof HTMLDivElement ){
 		//CreateAutoCompleteModal(x_axis,y_axis)
 		//updateModalPosition(x_axis,y_axis,lineChar)
 		console.log(codemirror)
 		ModalPosition(lineChar)
-		
+		//var data = LanguageFetcher(lang,code,doc)
+
 	}
 
 }

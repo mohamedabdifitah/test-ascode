@@ -14,7 +14,7 @@ const RemarkCode: React.FC<
   const langName = (className || '').substr(9)
 
   useEffect(() => {
-    /*
+    
     getLanguage(langName).then(language => {
       if (language) {
         const body = props.children instanceof Array ? props.children[0] : null
@@ -29,7 +29,7 @@ const RemarkCode: React.FC<
         setSpans(tokens)
       }
     })
-    */
+    
     const body = props.children instanceof Array ? props.children[0] : null;
     const tokens: Tokens = []
     setSpans(tokens)

@@ -310,6 +310,180 @@
 				"type":"keyword"
 			}
 
+		],
+		"window-object":[
+			"name":"window",
+			"constructor":[
+				{
+					"name":"DOMParser",
+					"prefix":"window.DOMParser",
+					"short_name":"DOMParser",
+					"description":"The DOMParser interface provides the ability to parse XML or HTML source code from a string into a DOM Document",
+					"methods":[
+						{
+							"name":"parseFromString()",
+							"short_name":"DOMParser.parseFromString()",
+							"prefix":"DOMParser.parseFromString()",
+							"description":"#DOMParser.parseFromString()\  The parseFromString() method of the DOMParser interface parses a string containing either HTML or XML, returning an HTMLDocument or an XMLDocument.\ #Syntax\n ```js\   const doc = parser.parseFromString(string,mimeType)```\   #Parameters\   ##string\  The DOMString to be parsed. It must contain either an HTML, xml, xhtml+xml, or svg document.\   ##mimeType \  A DOMString. This string determines whether the XML parser or the HTML parser is used to parse the string. Valid values are:\  -text/html  -text/xml  -application/xml -application/xhtml+xml  -image/svg+xml A value of text/html will invoke the HTML parser, and the method will return an HTMLDocument. Any other valid value will invoke the XML parser, and the method will return an XMLDocument.  Any other value will cause a TypeError to be thrown.\  #Return value\  An HTMLDocument or an XMLDocument, depending on the mimeType argument.",
+							"type":"method"
+
+							
+
+						}
+				
+
+					],
+					"type":"window constructor"
+				},
+				{
+					"name":"Image()",
+					"prefix":"window.Image()",
+					"short_name":"Image()",
+					"description":"#The Image()  constructor creates a new HTMLImageElement instance. It is functionally equivalent to document.createElement('img'). ```##Note: This function should not be confused with the CSS image() function.```",
+					"parameter":[
+						{
+							"name":"width",
+							"status":"number"
+						},
+						{
+							"name":"height",
+							"status":"number"
+						}
+					],
+					"type":"window constructor"
+
+				},
+				{
+					"name":"Option()",
+					"prefix":"window.Option()",
+					"short_name":"Option()",
+					"description":"#The Option() constructor creates a new HTMLOptionElement.  #Syntax  ```js var optionElementReference = new Option(text, value, defaultSelected, selected);  #Parameters ##text **Optional**  A DOMString representing the content of the element, i.e. the displayed text. If this is not specified, a default value of '' (empty string) is used.  ##value **Optional**  A DOMString representing the value of the HTMLOptionElement, i.e. the value attribute of the equivalent <option>. If this is not specified, the value of text is used as the value, e.g. for the associated <select> element's value when the form is submitted to the server.  ##defaultSelected **Optional**  A value of either true or false that sets the selected attribute value, i.e. so that this <option> will be the default value selected in the <select> element when the page is first loaded. If this is not specified, a default value of false is used. Note that a value of true does not set the option to selected if it is not already selected.  ##selected **Optional**  A value of either true or false that sets the option's selected state; the default is false (not selected). If omitted, even if the defaultSelected argument is true, the option is not selected.",
+					"parameters":[
+						{
+							"name":"text",
+							"status":"boolean"
+
+						},
+						{
+							"name":"value",
+							"status":"boolean"
+
+						},
+						{
+							"name":"defaultSelected",
+							"status":"boolean"
+						},
+						{
+							"name":"selected",
+							"status":"boolean"
+						}
+
+
+
+					],
+					"type":"window constructor"
+
+				},
+				{
+					"name":"StaticRangei()",
+					"prefix":"window.StaticRange()",
+					"short_name":"StaticRange",
+					"description":"# The StaticRange()  constructor creates a new StaticRange object representing a span of content within the DOM.This constructor includes properties identifying the standard and end positions of the range as well as a Boolean indicating whether or not the range is collapsed (that is, empty).  ## Syntax  ```js var staticRange = new StaticRange(rangeSpec)``` ## Parameters ### rangeSpec  The required rangeSpec parameter is an object containing the four following properties:-startContainer **The Node in which the starting point of the range is located.** -startOffset **The offset into the starting node at which the first character of the range is found.** -endContainer **The Node in which the end point of the range is located.** -endOffset **The offset into the node indicated by endOffset at which the last character in the range is located.** ## Return value  A new StaticRange object initialized with the values given in the rangeSpec object.## Exceptions  ### InvalidNodeTypeError  A DOMException fired if either or both of the startContainer and/or endContainer are a type of node which you can't include in a range. Those node types are Node.DOCUMENT_TYPE_NODE (representing the DocumentType node derived from the DTD identified using the doctype preamble in the HTML, for example) and the Attr node describing an attribute of an element on the DOM..",
+					"properties":[
+						{
+							"name":"collapsed()",
+							"prefix":"StaticRange.collapsed()",
+							"description":"#StaticRange.collapsed **Read only**  ##Returns  a Boolean value which is true if the range's start and end positions are the same, resulting in a range of length 0",
+							"inheritance":"",
+							"type":"properties"
+
+
+						}],
+					"parameters":[
+						{
+							"name":"rangeSpec",
+							"status":"object",
+							"elements":[
+								{
+									"name":"startContainer"
+								},
+								{
+									"name":"startOffset"
+								},
+								{
+									"name":"endContainer"
+								},
+								{
+									"name":"endOffset"
+								}
+
+
+							]
+
+						}
+					],
+					"type":"window constructor"
+
+				},
+				{
+					"name":"Worker()",
+					"prefix":"window.Worker()",
+					"short_name":"worker()",
+					"description":"The Worker() constructor creates a Worker object that executes the script at the specified URL. This script must obey the same-origin policy.",
+					"parameters":[
+						{
+							"name":"aURL",
+							"status":"normal"
+						},
+						{
+							"name":"options",
+							"status":"object",
+							"elements":[
+								{
+									"name":"type"
+								},
+								{
+									"name":"credentials"
+								},
+								{
+									"name":"name"
+								}
+
+							]
+
+
+						}
+
+					],
+					"type":"window constructor"
+					
+
+				},
+				{
+					"name":"XMLSerializer()",
+					"prefix":"window.XMLSerializer()",
+					"short_name":"XMLSerializer()",
+					"description":"The XMLSerializer interface provides the serializeToString() method to construct an XML string representing a DOM tree.",
+					"methods":[
+						{
+							"name":"serializeToString()"
+
+						}
+
+					],
+					"type":"window constructor"
+
+
+				}
+			],
+			"properties":[
+
+			],
+			"methods":[
+
+			],
+			"type":"global object"
+
 		]
 	}
 
