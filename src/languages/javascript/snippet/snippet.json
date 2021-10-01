@@ -311,7 +311,7 @@
 			}
 
 		],
-		"window-object":[
+		"window-object":{
 			"name":"window",
 			"constructor":[
 				{
@@ -324,7 +324,7 @@
 							"name":"parseFromString()",
 							"short_name":"DOMParser.parseFromString()",
 							"prefix":"DOMParser.parseFromString()",
-							"description":"#DOMParser.parseFromString()\  The parseFromString() method of the DOMParser interface parses a string containing either HTML or XML, returning an HTMLDocument or an XMLDocument.\ #Syntax\n ```js\   const doc = parser.parseFromString(string,mimeType)```\   #Parameters\   ##string\  The DOMString to be parsed. It must contain either an HTML, xml, xhtml+xml, or svg document.\   ##mimeType \  A DOMString. This string determines whether the XML parser or the HTML parser is used to parse the string. Valid values are:\  -text/html  -text/xml  -application/xml -application/xhtml+xml  -image/svg+xml A value of text/html will invoke the HTML parser, and the method will return an HTMLDocument. Any other valid value will invoke the XML parser, and the method will return an XMLDocument.  Any other value will cause a TypeError to be thrown.\  #Return value\  An HTMLDocument or an XMLDocument, depending on the mimeType argument.",
+							"description":"DOMParser.parseFromString()The parseFromString() method of the DOMParser interface parses a string containing either HTML or XML, returning an HTMLDocument or an XMLDocument.",
 							"type":"method"
 
 							
@@ -484,7 +484,7 @@
 			],
 			"type":"global object"
 
-		]
+		}
 	}
 
 
