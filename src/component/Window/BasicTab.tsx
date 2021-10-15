@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {IoClose} from "react-icons/io5"
 import BasicTabsOpener from "./BasicTabsOpener";
+import addEventListeners from "./DragAndDrop";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
@@ -83,6 +84,10 @@ function SimpleTabs() {
   tabList.insertBefore(document.getElementById(data), node.nextSibling);
   }
   */
+  React.useEffect(()=>{
+   addEventListeners()
+
+  },[])
 
   return (
     <div className={classes.root}>

@@ -5,6 +5,7 @@ import * as esprima from 'esprima';
 import EditorComp from "../../component/Window/Editor/EditorComp.tsx"
 //const { default: json } = await import("./test.json", { assert: { type: "json" } });
 //console.log(json.hello);
+//import {suggestion} from "../index";
 function getVarsNames(v = {}){
     // getting keys or names !
     let names = Object.keys(v);
@@ -18,6 +19,8 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:object
 	*/
       // var suggestion = []
        //console.log(doc?.current?.getValue("\s"),"***************£££")
+	
+
        var ArrayMethods = [
 	       {
 		       "concat()":"Joins two or more arrays, and returns a copy of the joined arrays",
@@ -348,7 +351,7 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:object
         console.log(suggestion,"javascript extension")
 	*/
        // var AutoCompleteModal = document.querySelector(".AutoComplete__Modal")
-       let Modal = document.querySelector(".AutoComplete__Modal")
+       /*let Modal = document.querySelector(".AutoComplete__Modal")
        if(Modal instanceof HTMLDivElement){
 	       suggestion.map((elem,index)=>{
 		       //const ListOfAutoComplete = document.querySelector(".List__of__suggestion");
@@ -369,6 +372,7 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:object
 		       /*
 			* short description of Suggest
 			*/
+		       /*
 		       const suggShortDescript = document.createElement("p")
 		       suggShortDescript.className = "suggestion__short__descript"
 		       suggShortDescript.innerHTML = `${elem.description}`;
@@ -388,6 +392,7 @@ const javascriptSnippetMakert = (lang:string,code:string,onChange:any,doc:object
 		       //AutoCompleteModal.innerHTML = `hhh`;
 		})
        }
+       */
 	//var currentCode = JsTokenize(code,doc.current.getCursor())
 	console.log(doc,"js extension")
 	//console.log(currentCode)

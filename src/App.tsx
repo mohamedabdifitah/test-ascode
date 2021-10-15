@@ -19,6 +19,7 @@ import SplitterLayout from 'react-splitter-layout';
 /*
 import 'react-splitter-layout/lib/index.css';
 */
+import NewSidebar from "./component/Sidebar/NewSidebar";
 function App() {
   /*
   const onSplitChanged = (primarySize: string) => {
@@ -36,7 +37,8 @@ function App() {
       <Setting />
        <Header />
 
-       <Sidebar/>
+       {/*<Sidebar/>*/}
+       <NewSidebar />
         <div className="Sidebar-window-separator" draggable={true}>
 	</div>
         <Windows />

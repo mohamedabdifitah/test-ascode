@@ -2,6 +2,12 @@
 import javascriptSnippetMaker from "./javascript/javascript";
 import pythonSnippetMaker from './python/python';
 import cssParser from './css/cssParser';
+export class suggestionClass  {
+  constructor() {
+  }
+}
+
+export const suggestion = new suggestionClass()
 export default function LanguageFetcher(lang:string,code:string,onChange:any,doc:object){
 	/*LanguageTeller(lang)
 	 */

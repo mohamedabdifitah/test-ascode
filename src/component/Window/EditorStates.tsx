@@ -9,6 +9,7 @@ function EditorStates(props) {
   const[height,setheight] = useState("100%");
   const [width,setwidth] = useState("100%");
   const[ShowPreviewMd,setShowPreviewMd]= useState(false)
+  const[suggestion,setSuggestion] = useState(null)
   return {
    EditorScreens,
    setEditorScreens,
@@ -23,6 +24,8 @@ function EditorStates(props) {
    setwidth,
    ShowPreviewMd,
    setShowPreviewMd,
+   suggestion,
+   setSuggestion
   }
 }
 

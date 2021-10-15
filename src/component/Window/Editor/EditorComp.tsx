@@ -249,7 +249,8 @@ import { Controlled as ControlledEditor } from 'react-codemirror2'
 //import MarkdownPreview from "../../../languages/mark-down/Markdown-Preview";
 import Preview from "./markdown/preview";
 import DescriptFetcher from "./DescriptModal";
-//import EditorStates from "../EditorStates"; 
+import suggestionRunner from "./Suggestion"
+import EditorStates from "../EditorStates"; 
 interface Props {
 language:string;
 displayName:string;
@@ -275,6 +276,8 @@ export default function EditorComp(props:Props) {
   setShowPreviewMd,
   EditorScreens,
   setEditorScreens,
+  suggestion,
+  setSuggestion
   }= EditorStates()
   */
   const [lineChar,setlineChar] = useState({line:0,ch:0,sticky:null})
@@ -430,6 +433,11 @@ export default function EditorComp(props:Props) {
      
 
   },[value,lineChar,doc]);
+  useEffect(()=>{
+   var data = LanguageFetcher(language,value,doc)
+   //setSuggestion(data)
+
+  },[value])
   /*useEffect(()=>{
    var data = LanguageFetcher(language,value,onChange,doc)
 
@@ -481,6 +489,16 @@ export default function EditorComp(props:Props) {
 
    }
 
+
+  },[value])
+  /*
+   * useEffect for SuggestionWriting
+   */
+  useEffect(()=>{
+   
+    suggestionRunner(language,value,doc)
+
+   
 
   },[value])
   return (

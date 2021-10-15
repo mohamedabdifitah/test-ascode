@@ -16,7 +16,7 @@ export default function CreateAutoCompleteModal(x_axis:number,y_axis:number,lang
 	const codemirror = document.querySelector(".CodeMirror-scroll")
 	   //const codemirror = document.querySelector(".CodeMirror")
 	codemirror.appendChild(AutoCompleteModal)
-	var data = LanguageFetcher(lang,code,doc)
+	//var data = LanguageFetcher(lang,code,doc)
 	console.log(codemirror)
 	alert(codemirror)
 }
@@ -30,6 +30,8 @@ export function FetchPosition(x_axis:number,y_axis,lineChar:{line:number,ch:numb
 		//updateModalPosition(x_axis,y_axis,lineChar)
 		console.log(codemirror)
 		ModalPosition(lineChar)
+		console.log(window.getSelection())
+		console.log(window.Selection.toString())
 		//var data = LanguageFetcher(lang,code,doc)
 
 	}
