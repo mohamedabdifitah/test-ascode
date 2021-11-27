@@ -1,6 +1,5 @@
 import LanguageFetcher from "../../../languages/index"
-var number =[];
-export default function suggestionRunner(lang:string,code:string,doc:any){
+export default function suggestionRunner(lang:string,code:string,doc:any,selectedSuggest:number){
 	var suggestion = LanguageFetcher(lang,code,doc)
 	let Modal = document.querySelector(".AutoComplete__Modal")
 	if(Modal instanceof HTMLDivElement){
@@ -13,7 +12,7 @@ export default function suggestionRunner(lang:string,code:string,doc:any){
 			const ContainerOfSugg = document.createElement("div");                                                    
 			const TextOfSugg = document.createElement("p");
                       
-			ContainerOfSugg.className = index==number?"suggestion__container selected":"suggestion__container";                                                                                                                     
+			ContainerOfSugg.className = index==selectedSuggest?"suggestion__container selected":"suggestion__container";                                                                                                                     
 			TextOfSugg.className = "suggestion__name";
                        
 			TextOfSugg.innerHTML = elem.type == "snippet"?`${elem.short_name}`:`${elem.name}`;                       
@@ -56,6 +55,7 @@ export default function suggestionRunner(lang:string,code:string,doc:any){
 			//AutoCompleteModal.innerHTML = `hhh`;
                 })
        }
+       /*
        var el = document.body;
 
        if(typeof el.addEventListener != "undefined") {
@@ -108,6 +108,6 @@ export default function suggestionRunner(lang:string,code:string,doc:any){
 		       break;
     }
 }
-       
+       */
 	
 }

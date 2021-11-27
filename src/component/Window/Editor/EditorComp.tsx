@@ -251,6 +251,7 @@ import Preview from "./markdown/preview";
 import DescriptFetcher from "./DescriptModal";
 import suggestionRunner from "./Suggestion"
 import EditorStates from "../EditorStates"; 
+import AutoCompleteStates from "./AutoCompleteStates.tsx"
 interface Props {
 language:string;
 displayName:string;
@@ -280,6 +281,54 @@ export default function EditorComp(props:Props) {
   setSuggestion
   }= EditorStates()
   */
+  /*
+   * initialiing all autoComplete states
+   */
+  const {
+   selectedSuggest,
+   setSelectedSuggest
+
+
+  } = AutoCompleteStates()
+
+  /*
+   * adding events listners
+   */
+  function doThis(key) {
+
+               switch (key) {
+
+                       case 13:
+                               alert('enter pressed');
+
+                       break;
+
+                       case 27:
+
+                               
+                               alert('esc pressed');
+
+                       break;
+
+                       case 38:
+
+		             setSelectedSuggest(setSelectedSuggest-1)
+			     alert('up pressed');
+			     //alert(setSelectedSuggest)
+
+                       break;
+
+                       case 40:
+                               setSelectedSuggest(selectedSuggest+1)
+			       alert(selectedSuggest)
+
+                               alert('down pressed');
+
+                       break;
+
+    }
+    }
+  
   const [lineChar,setlineChar] = useState({line:0,ch:0,sticky:null})
   /*
    * swapLine
@@ -457,6 +506,7 @@ export default function EditorComp(props:Props) {
    }
 
   },[value])
+
   /*useEffect(()=>{
    if(language === "markdown"){
     setEditorScreens(EditorScreens +1)
@@ -494,13 +544,66 @@ export default function EditorComp(props:Props) {
   /*
    * useEffect for SuggestionWriting
    */
+  /*
   useEffect(()=>{
-   
-    suggestionRunner(language,value,doc)
+    
+    var el = document.body;
+
+       if(typeof el.addEventListener != "undefined") {
+
+               el.addEventListener("keydown", function(evt) {
+
+                       doThis(evt.keyCode);
+
+               }, false);
+
+       } else if (typeof el.attachEvent != "undefined") {
+
+               el.attachEvent("onkeydown", function(evt) {
+                                                                                                        doThis(evt.keyCode);
+
+               });
+
+       }
+       /*
+
+       function doThis(key) {
+
+               switch (key) {
+
+                       case 13:                                                  
+                               alert('enter pressed');
+
+                       break;
+
+                       case 27:
+
+                               alert('esc pressed');
+
+                       break;
+
+                       case 38:
+
+                               alert('up pressed');
+
+                       break;
+
+                       case 40:
+
+                               alert('down pressed');
+
+                       break;
+    
+    }
+    }
+    */
+   /*
+    suggestionRunner(language,value,doc,selectedSuggest)
 
    
 
-  },[value])
+  },[])
+  */
   return (
   <div className={className}>
    <ControlledEditor

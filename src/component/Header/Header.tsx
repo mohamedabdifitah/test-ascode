@@ -5,6 +5,7 @@ import {Avatar} from "@material-ui/core"
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ScreenShareIcon from '@material-ui/icons/ScreenShare';
+import Menu from "./menu/menu"
 function Header(){
    const useStyles = makeStyles({
    Avatar: {
@@ -30,12 +31,13 @@ function Header(){
    }
    return (
        <div className="Header">
+        {/* this will deleted
         <div className="header__icons">
-	 
 	 <IconButton onClick={handleClick}> <Avatar className={classes.Avatar} src="./profile.jpg"/></IconButton>
 	  <IconButton onClick={handleClick}><ScreenShareIcon className={classes.ShareIcon}></ScreenShareIcon></IconButton>
 	 </div>
-
+	 */}
+	<Menu />
        </div>
 
    )

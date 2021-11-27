@@ -34,11 +34,11 @@ function App() {
   return (
     <div className="App">
 
-      <Setting />
+      {/*<Setting />*/}
        <Header />
 
-       {/*<Sidebar/>*/}
-       <NewSidebar />
+       <Sidebar/>
+       {/*<NewSidebar />*/}
         <div className="Sidebar-window-separator" draggable={true}>
 	</div>
         <Windows />
